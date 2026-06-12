@@ -20,7 +20,7 @@ export default function Header() {
           href="/"
           className="text-lg font-light tracking-wider text-[var(--foreground)] hover:text-[var(--primary)] transition-colors duration-300"
         >
-          ☽ 飞雨落花的驿栈
+          ☽ 雨落花庭
         </Link>
         <nav className="flex gap-6">
           {navItems.map((item) => {

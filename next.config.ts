@@ -1,11 +1,9 @@
 import type { NextConfig } from "next";
 
-const BASE_PATH = process.env.BASE_PATH || "/ouo";
-
 const nextConfig: NextConfig = {
   output: "export",
   images: { unoptimized: true },
-  basePath: BASE_PATH || undefined,
+  basePath: process.env.GH_PAGES === "1" ? "/ouo" : undefined,
 };
 
 export default nextConfig;
