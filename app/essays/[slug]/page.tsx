@@ -1,7 +1,6 @@
 import { getEssayBySlug, getAllEssays } from "@/lib/essays";
 import { notFound } from "next/navigation";
 import MDXContent from "@/components/MDXContent";
-import Link from "next/link";
 import type { Metadata } from "next";
 
 type Props = {
@@ -66,22 +65,22 @@ export default async function EssayPage({ params }: Props) {
 
       <nav className="mt-16 pt-8 border-t border-[var(--border)]/30 flex justify-between text-sm">
         {prev ? (
-          <Link
+          <a
             href={`/essays/${prev.slug}`}
             className="text-[var(--muted)] hover:text-[var(--primary)] transition-colors"
           >
             ← {prev.title}
-          </Link>
+          </a>
         ) : (
           <span />
         )}
         {next ? (
-          <Link
+          <a
             href={`/essays/${next.slug}`}
             className="text-[var(--muted)] hover:text-[var(--primary)] transition-colors text-right"
           >
             {next.title} →
-          </Link>
+          </a>
         ) : (
           <span />
         )}

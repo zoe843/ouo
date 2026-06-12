@@ -1,4 +1,4 @@
-import Link from "next/link";
+import React from "react";
 import { getRecentEssays } from "@/lib/essays";
 import { getRecentPhotos } from "@/lib/photos";
 import EssayCard from "@/components/EssayCard";
@@ -18,18 +18,18 @@ export default function HomePage() {
           某些安静的时刻 · 一些文字 · 几张照片
         </p>
         <div className="mt-8 flex justify-center gap-6">
-          <Link
+          <a
             href="/essays"
             className="px-6 py-2 rounded-full border border-[var(--border)] text-sm text-[var(--foreground)]/70 hover:text-[var(--primary)] hover:border-[var(--primary)]/30 transition-all duration-300"
           >
             看看随笔
-          </Link>
-          <Link
+          </a>
+          <a
             href="/photos"
             className="px-6 py-2 rounded-full border border-[var(--border)] text-sm text-[var(--foreground)]/70 hover:text-[var(--primary)] hover:border-[var(--primary)]/30 transition-all duration-300"
           >
             翻翻照片
-          </Link>
+          </a>
         </div>
       </section>
 
@@ -40,12 +40,12 @@ export default function HomePage() {
             <h2 className="text-lg font-light tracking-wider text-[var(--foreground)]">
               最近随笔
             </h2>
-            <Link
+            <a
               href="/essays"
               className="text-xs text-[var(--muted)] hover:text-[var(--primary)] transition-colors"
             >
               查看全部 →
-            </Link>
+            </a>
           </div>
           <div className="space-y-4">
             {recentEssays.map((essay) => (
@@ -62,16 +62,16 @@ export default function HomePage() {
             <h2 className="text-lg font-light tracking-wider text-[var(--foreground)]">
               最近照片
             </h2>
-            <Link
+            <a
               href="/photos"
               className="text-xs text-[var(--muted)] hover:text-[var(--primary)] transition-colors"
             >
               查看更多 →
-            </Link>
+            </a>
           </div>
           <div className="grid grid-cols-3 gap-2 md:gap-3">
             {recentPhotos.map((photo, i) => (
-              <Link
+              <a
                 key={i}
                 href="/photos"
                 className="relative aspect-[4/3] rounded-lg overflow-hidden bg-[var(--card)] border border-[var(--border)]/30 hover:-translate-y-1 transition-all duration-500 ease-out card-glow group"
@@ -82,7 +82,7 @@ export default function HomePage() {
                   loading="lazy"
                   className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
                 />
-              </Link>
+              </a>
             ))}
           </div>
         </section>
