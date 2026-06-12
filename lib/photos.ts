@@ -7,10 +7,15 @@ export interface PhotoItem {
 
 import photosData from "@/content/photos/photos.json";
 
+const BASE_PATH = process.env.BASE_PATH === "root" ? "" : "/ouo";
+
 export function getAllPhotos(): PhotoItem[] {
   return (photosData as PhotoItem[]).sort((a, b) =>
     b.date > a.date ? 1 : -1
-  );
+  ).map(p => ({
+    ...p,
+    url: BASE_PATH + p.url,
+  }));
 }
 
 export function getRecentPhotos(count: number = 6): PhotoItem[] {
