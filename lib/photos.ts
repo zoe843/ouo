@@ -6,8 +6,7 @@ export interface PhotoItem {
 }
 
 import photosData from "@/content/photos/photos.json";
-
-const BASE_PATH = process.env.BASE_PATH === "root" ? "" : "/ouo";
+import { BASE_PATH } from "@/lib/constants";
 
 export function getAllPhotos(): PhotoItem[] {
   return (photosData as PhotoItem[]).sort((a, b) =>
