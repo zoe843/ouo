@@ -5,7 +5,7 @@ import Footer from "@/components/Footer";
 import MusicPlayer from "@/components/MusicPlayer";
 
 export const metadata: Metadata = {
-  title: "飞雨落花的驿栈",
+  title: "雨落花庭",
   description: "一个存放随笔与照片的小站",
 };
 

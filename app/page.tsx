@@ -12,7 +12,7 @@ export default function HomePage() {
       {/* Hero */}
       <section className="pt-24 pb-16 text-center animate-float-up">
         <h1 className="text-3xl md:text-4xl font-light tracking-widest text-[var(--foreground)]">
-          飞雨落花的驿栈
+          雨落花庭
         </h1>
         <p className="mt-4 text-sm md:text-base text-[var(--muted)] font-light tracking-wider leading-relaxed">
           某些安静的时刻 · 一些文字 · 几张照片
