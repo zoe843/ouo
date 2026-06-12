@@ -8,7 +8,7 @@ echo  ====================================
 echo.
 
 :: 启动本地服务器
-start "" "http://localhost:3000/ouo"
+start "" "http://localhost:3000"
 npx next dev -p 3000
 
 pause
