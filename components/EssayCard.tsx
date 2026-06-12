@@ -1,9 +1,8 @@
-import Link from "next/link";
 import type { EssayMeta } from "@/lib/essays";
 
 export default function EssayCard({ essay }: { essay: EssayMeta }) {
   return (
-    <Link href={`/essays/${essay.slug}`}>
+    <a href={`/essays/${essay.slug}`}>
       <article className="group p-6 rounded-xl bg-[var(--card)] border border-[var(--border)]/40 card-glow transition-all duration-500 ease-out hover:-translate-y-1">
         <h3 className="text-lg font-light tracking-wide text-[var(--foreground)] group-hover:text-[var(--primary)] transition-colors duration-300">
           {essay.title}
@@ -29,6 +28,6 @@ export default function EssayCard({ essay }: { essay: EssayMeta }) {
           </p>
         )}
       </article>
-    </Link>
+    </a>
   );
 }
