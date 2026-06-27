@@ -1,7 +1,51 @@
 "use client";
 
-import { useState, useRef, useEffect } from "react";
-import { BASE_PATH } from "@/lib/constants";
+import { useState, useRef, useEffect, useCallback } from "react";
+
+const STORAGE_KEY = "music-player-state";
+
+interface PlayerState {
+  playing: boolean;
+  currentTime: number;
+  timestamp: number;
+}
+
+/** 安全读取 sessionStorage 中的播放状态 */
+function readStoredState(): PlayerState | null {
+  try {
+    const raw = sessionStorage.getItem(STORAGE_KEY);
+    if (!raw) return null;
+    const parsed = JSON.parse(raw) as PlayerState;
+    if (
+      typeof parsed.playing !== "boolean" ||
+      typeof parsed.currentTime !== "number" ||
+      typeof parsed.timestamp !== "number"
+    ) {
+      return null;
+    }
+    return parsed;
+  } catch {
+    return null;
+  }
+}
+
+/** 安全写入播放状态到 sessionStorage */
+function writeStoredState(state: PlayerState): void {
+  try {
+    sessionStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+  } catch {
+    // 静默失败（存储满 / 隐私模式等）
+  }
+}
+
+/** 安全清除 sessionStorage 中的播放状态 */
+function clearStoredState(): void {
+  try {
+    sessionStorage.removeItem(STORAGE_KEY);
+  } catch {
+    // 静默失败
+  }
+}
 
 /** 音符 + 暂停图标组件 */
 function MusicIcon({ playing }: { playing: boolean }) {
@@ -26,27 +70,103 @@ function MusicIcon({ playing }: { playing: boolean }) {
 export default function MusicPlayer() {
   const [playing, setPlaying] = useState(false);
   const audioRef = useRef<HTMLAudioElement | null>(null);
+  const playingRef = useRef(false);
+
+  // 同步 playing 到 ref，避免 interval/事件闭包陈旧
+  useEffect(() => {
+    playingRef.current = playing;
+  }, [playing]);
 
   useEffect(() => {
-    const audio = new Audio(BASE_PATH + "/music.mp3");
+    const audio = new Audio("/music.mp3");
     audio.loop = true;
     audio.volume = 0.4;
     audioRef.current = audio;
+
+    // ---- 1. 尝试恢复上次播放状态 ----
+    const stored = readStoredState();
+    if (stored && stored.playing) {
+      if (stored.currentTime > 0) {
+        audio.currentTime = stored.currentTime;
+      }
+      audio.play().then(() => {
+        setPlaying(true);
+      }).catch(() => {
+        // 浏览器阻止 autoplay，静默降级；进度已恢复，用户点击即可继续
+      });
+    }
+
+    // ---- 2. 定时保存 currentTime（播放中每 1 秒） ----
+    const saveInterval = setInterval(() => {
+      if (!audioRef.current || audioRef.current.paused) return;
+      writeStoredState({
+        playing: true,
+        currentTime: audioRef.current.currentTime,
+        timestamp: Date.now(),
+      });
+    }, 1000);
+
+    // ---- 3. beforeunload：<a> 导航前的最终保存 ----
+    const handleBeforeUnload = () => {
+      if (!audioRef.current) return;
+      writeStoredState({
+        playing: !audioRef.current.paused,
+        currentTime: audioRef.current.currentTime,
+        timestamp: Date.now(),
+      });
+    };
+    window.addEventListener("beforeunload", handleBeforeUnload);
+
+    // ---- 4. visibilitychange：页面隐藏时保存（移动端兜底） ----
+    const handleVisibilityChange = () => {
+      if (document.hidden && audioRef.current) {
+        writeStoredState({
+          playing: !audioRef.current.paused,
+          currentTime: audioRef.current.currentTime,
+          timestamp: Date.now(),
+        });
+      }
+    };
+    document.addEventListener("visibilitychange", handleVisibilityChange);
+
     return () => {
+      // cleanup：保存最终状态
+      clearInterval(saveInterval);
+      window.removeEventListener("beforeunload", handleBeforeUnload);
+      document.removeEventListener("visibilitychange", handleVisibilityChange);
+      if (audioRef.current) {
+        writeStoredState({
+          playing: !audioRef.current.paused,
+          currentTime: audioRef.current.currentTime,
+          timestamp: Date.now(),
+        });
+      }
       audio.pause();
       audioRef.current = null;
     };
   }, []);
 
-  const toggle = () => {
-    if (!audioRef.current) return;
+  const toggle = useCallback(() => {
+    const audio = audioRef.current;
+    if (!audio) return;
+
     if (playing) {
-      audioRef.current.pause();
+      audio.pause();
+      setPlaying(false);
+      clearStoredState();
     } else {
-      audioRef.current.play().catch(() => setPlaying(false));
+      audio.play().then(() => {
+        setPlaying(true);
+        writeStoredState({
+          playing: true,
+          currentTime: audio.currentTime,
+          timestamp: Date.now(),
+        });
+      }).catch(() => {
+        // play() 失败，不更新 UI
+      });
     }
-    setPlaying(!playing);
-  };
+  }, [playing]);
 
   return (
     <button

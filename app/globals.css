@@ -24,13 +24,19 @@
 
 @layer base {
   body {
-    background: var(--background);
+    background:
+      radial-gradient(ellipse 80% 60% at 85% 90%, rgba(200, 140, 80, 0.18) 0%, transparent 60%),
+      radial-gradient(ellipse 50% 40% at 10% 5%, rgba(90, 160, 240, 0.14) 0%, transparent 55%),
+      radial-gradient(ellipse 40% 35% at 50% 30%, rgba(74, 158, 255, 0.06) 0%, transparent 50%),
+      var(--background);
     color: var(--foreground);
     font-family: var(--font-sans);
     font-weight: 300;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
+
+  /* 光晕已移至 body background — 不再需要 ::after */
 
   /* 胶片颗粒感噪点 overlay */
   body::before {
@@ -39,7 +45,7 @@
     inset: 0;
     z-index: 9999;
     pointer-events: none;
-    opacity: 0.035;
+    opacity: 0.05;
     background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
   }
 
