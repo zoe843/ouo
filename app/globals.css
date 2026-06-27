@@ -29,15 +29,19 @@
 
   body {
     min-height: 100vh;
-    background:
-      linear-gradient(180deg, rgba(10, 22, 40, 0.3) 0%, rgba(10, 22, 40, 0.45) 100%),
-      url("/images/bg.jpg") center / cover no-repeat fixed;
-    background-color: #0a1628;
     color: var(--foreground);
     font-family: var(--font-sans);
     font-weight: 300;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    background-color: #0a1628;
+    background-image:
+      linear-gradient(180deg, rgba(10, 22, 40, 0.3) 0%, rgba(10, 22, 40, 0.45) 100%),
+      url("/images/bg.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: scroll;
   }
 
   ::selection {
