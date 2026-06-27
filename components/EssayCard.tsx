@@ -3,7 +3,12 @@ import type { EssayMeta } from "@/lib/essays";
 export default function EssayCard({ essay }: { essay: EssayMeta }) {
   return (
     <a href={`/essays/${essay.slug}`}>
-      <article className="group p-6 rounded-xl bg-[var(--card)] border border-[var(--border)]/40 card-glow transition-all duration-500 ease-out hover:-translate-y-1">
+      <article className="group p-6 rounded-xl border border-[var(--border)]/40 card-glow transition-all duration-500 ease-out hover:-translate-y-1 relative overflow-hidden">
+        {/* 背景图层 */}
+        <div className="absolute inset-0 bg-[url('/images/essay-bg.jpg')] bg-cover bg-center opacity-45 group-hover:opacity-55 transition-opacity duration-500" />
+        <div className="absolute inset-0 bg-[var(--card)]/30" />
+        {/* 内容 */}
+        <div className="relative z-[1]">
         <h3 className="text-lg font-light tracking-wide text-[var(--foreground)] group-hover:text-[var(--primary)] transition-colors duration-300">
           {essay.title}
         </h3>
@@ -27,6 +32,7 @@ export default function EssayCard({ essay }: { essay: EssayMeta }) {
             {essay.description}
           </p>
         )}
+        </div>
       </article>
     </a>
   );

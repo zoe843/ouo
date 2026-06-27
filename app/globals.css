@@ -25,10 +25,12 @@
 @layer base {
   body {
     background:
-      radial-gradient(ellipse 80% 60% at 85% 90%, rgba(200, 140, 80, 0.18) 0%, transparent 60%),
-      radial-gradient(ellipse 50% 40% at 10% 5%, rgba(90, 160, 240, 0.14) 0%, transparent 55%),
-      radial-gradient(ellipse 40% 35% at 50% 30%, rgba(74, 158, 255, 0.06) 0%, transparent 50%),
-      var(--background);
+      linear-gradient(180deg, rgba(10, 22, 40, 0.3) 0%, rgba(10, 22, 40, 0.45) 100%),
+      url("/images/bg.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: scroll;
     color: var(--foreground);
     font-family: var(--font-sans);
     font-weight: 300;
