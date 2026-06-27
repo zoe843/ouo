@@ -17,7 +17,7 @@ export default function RootLayout({
   return (
     <html lang="zh-CN" className="h-full antialiased">
       <head>
-        <link rel="preload" as="image" href="/images/bg.jpg" />
+        <link rel="preload" as="image" href="/images/bg.jpg" fetchpriority="high" />
       </head>
       <body className="min-h-full flex flex-col text-[var(--foreground)]">
         <Header />
