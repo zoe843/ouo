@@ -5,7 +5,7 @@ export default function EssayCard({ essay }: { essay: EssayMeta }) {
     <a href={`/essays/${essay.slug}`}>
       <article className="group p-6 rounded-xl border border-[var(--border)]/40 card-glow transition-all duration-500 ease-out hover:-translate-y-1 relative overflow-hidden">
         {/* 背景图层 */}
-        <div className="absolute inset-0 bg-[url('/images/essay-bg.jpg')] bg-cover bg-center opacity-45 group-hover:opacity-55 transition-opacity duration-500" />
+        <div className="absolute inset-0 bg-[url('/images/essay-bg.webp')] bg-cover bg-center opacity-45 group-hover:opacity-55 transition-opacity duration-500" />
         <div className="absolute inset-0 bg-[var(--card)]/30" />
         {/* 内容 */}
         <div className="relative z-[1]">
