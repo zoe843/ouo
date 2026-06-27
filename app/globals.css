@@ -23,8 +23,14 @@
 }
 
 @layer base {
+  html {
+    height: 100%;
+  }
+
   body {
-    background:
+    min-height: 100vh;
+    background-color: #0a1628;
+    background-image:
       linear-gradient(180deg, rgba(10, 22, 40, 0.3) 0%, rgba(10, 22, 40, 0.45) 100%),
       url("/images/bg.jpg");
     background-size: cover;
