@@ -27,6 +27,7 @@
     background-color: #0a1628;
   }
 
+  /* 背景图直接放在 body 上 */
   body {
     min-height: 100vh;
     color: var(--foreground);
