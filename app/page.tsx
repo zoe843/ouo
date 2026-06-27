@@ -14,9 +14,6 @@ export default function HomePage() {
         <h1 className="text-3xl md:text-4xl font-light tracking-widest text-[var(--foreground)]">
           雨落花庭
         </h1>
-        <p className="mt-4 text-sm md:text-base text-[var(--muted)] font-light tracking-wider leading-relaxed">
-          某些安静的时刻 · 一些文字 · 几张照片
-        </p>
         <div className="mt-8 flex justify-center gap-6">
           <a
             href="/essays"
