@@ -8,6 +8,9 @@ export default function EssayCard({ essay }: { essay: EssayMeta }) {
         <div className="absolute inset-0 bg-[url('/images/essay-bg.webp')] bg-cover bg-center opacity-45 group-hover:opacity-55 transition-opacity duration-500" />
         <div className="absolute inset-0 bg-[var(--card)]/30" />
 
+        {/* 顶部渐变彩条 */}
+        <div className="absolute top-0 left-2 right-2 h-px bg-gradient-to-r from-transparent via-[var(--primary)]/30 to-transparent transition-all duration-500 ease-out group-hover:via-[var(--primary)]/60" />
+
         {/* 左侧装饰线 */}
         <span className="absolute left-0 top-3 bottom-3 w-[2px] rounded-r-full bg-[var(--border)]/50 transition-all duration-300 ease-out group-hover:w-[3px] group-hover:bg-[var(--primary)]/60 z-[1]" />
 
