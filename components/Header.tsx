@@ -4,11 +4,11 @@ import React from "react";
 import { usePathname } from "next/navigation";
 
 const navItems = [
-  { href: "/", label: "首", icon: "🏠" },
-  { href: "/essays", label: "文", icon: "✍" },
-  { href: "/murmurs", label: "语", icon: "💭" },
-  { href: "/photos", label: "影", icon: "📷" },
-  { href: "/about", label: "我", icon: "🌿" },
+  { href: "/", label: "首页" },
+  { href: "/essays", label: "随笔" },
+  { href: "/murmurs", label: "碎碎念" },
+  { href: "/photos", label: "照片" },
+  { href: "/about", label: "关于" },
 ];
 
 export default function Header() {
@@ -36,7 +36,7 @@ export default function Header() {
           </svg>
           <span>雨落花庭</span>
         </a>
-        <nav className="flex items-center">
+        <nav className="flex items-center gap-1">
           {navItems.map((item, i) => {
             const isActive =
               item.href === "/"
@@ -44,21 +44,17 @@ export default function Header() {
                 : pathname.startsWith(item.href);
 
             return (
-              <React.Fragment key={item.href}>
-                {i > 0 && (
-                  <span className="text-[var(--border)]/40 mx-1 select-none">·</span>
-                )}
-                <a
-                  href={item.href}
-                  className={`group relative px-2 py-1 text-xs tracking-wider transition-all duration-300 rounded-md ${
-                    isActive
-                      ? "text-[var(--foreground)] bg-[var(--primary)]/10"
-                      : "text-[var(--muted)] hover:text-[var(--foreground)] hover:bg-[var(--primary)]/5"
-                  }`}
-                >
-                  {item.label}
-                </a>
-              </React.Fragment>
+              <a
+                key={item.href}
+                href={item.href}
+                className={`relative px-4 py-1.5 text-sm tracking-wider rounded-full transition-all duration-300 ease-out ${
+                  isActive
+                    ? "text-[var(--foreground)] bg-[var(--primary)]/12 border border-[var(--primary)]/20 shadow-[0_0_12px_rgba(74,158,255,0.1)]"
+                    : "text-[var(--muted)] hover:text-[var(--foreground)] hover:bg-[var(--foreground)]/5 border border-transparent"
+                }`}
+              >
+                {item.label}
+              </a>
             );
           })}
         </nav>
