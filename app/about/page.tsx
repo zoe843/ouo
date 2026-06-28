@@ -40,10 +40,13 @@ export default function AboutPage() {
   return (
     <div className="max-w-3xl mx-auto px-6 pt-20 pb-10">
       <div className="mb-12 animate-float-up">
-        <h1 className="text-3xl font-light tracking-wider text-[var(--foreground)]">
-          关于
-        </h1>
-        <p className="mt-2 text-sm text-[var(--muted)] tracking-wide">
+        <div className="flex items-center gap-3">
+          <span className="w-1 h-6 rounded-full bg-[var(--primary)]/60 inline-block" />
+          <h1 className="text-3xl font-light tracking-wider text-[var(--foreground)]">
+            关于
+          </h1>
+        </div>
+        <p className="mt-3 pl-5 text-sm text-[var(--muted)] tracking-wide">
           关于这个驿站，和驿站背后的人
         </p>
       </div>
