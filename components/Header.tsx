@@ -47,46 +47,36 @@ export default function Header() {
               <a
                 key={item.href}
                 href={item.href}
-                className={`group relative flex flex-col items-center px-3 py-1 text-sm tracking-wider transition-all duration-300 ease-out ${
-                  isActive ? "text-[var(--primary)]" : "text-[var(--muted)] hover:text-[var(--foreground)]"
+                className={`group relative flex flex-col items-center px-3 py-1.5 text-sm tracking-wider transition-colors duration-300 ${
+                  isActive ? "text-[var(--foreground)]" : "text-[var(--muted)] hover:text-[var(--foreground)]"
                 }`}
               >
-                {/* 水滴外框 SVG — 宽扁 viewBox 匹配文字 */}
-                <svg
-                  className="absolute inset-0 w-full h-full pointer-events-none select-none"
-                  viewBox="0 0 80 48"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                  aria-hidden="true"
-                >
-                  <path
-                    d="M40 3
-                       C70 3 77 18 77 28
-                       C77 38 68 45 56 45
-                       L40 45
-                       L24 45
-                       C12 45 3 38 3 28
-                       C3 18 10 3 40 3Z"
-                    stroke="var(--primary)"
-                    strokeWidth="1.2"
-                    opacity={isActive ? 0.5 : 0.18}
-                    className="transition-opacity duration-300"
-                  />
-                  {/* 顶部尖 */}
-                  <path
-                    d="M40 3 L43 10 L37 10Z"
-                    fill="var(--primary)"
-                    opacity={isActive ? 0.35 : 0.12}
-                    className="transition-opacity duration-300"
-                  />
-                  {/* 底部尾 */}
-                  <line
-                    x1="64" y1="40" x2="64" y2="45"
-                    stroke="var(--primary)" strokeWidth="1.2" strokeLinecap="round"
-                    opacity={isActive ? 0.3 : 0.1}
-                    className="transition-opacity duration-300"
-                  />
-                </svg>
+                {/* CSS 水滴 — 椭圆 + ::before 三角 + ::after 尾线 */}
+                <span
+                  className={`absolute inset-0 rounded-[50%] border transition-all duration-300 ${
+                    isActive
+                      ? "border-[var(--primary)]/40 bg-[var(--primary)]/8"
+                      : "border-[var(--border)]/25 bg-transparent group-hover:border-[var(--primary)]/30"
+                  }`}
+                  style={{
+                    borderTopLeftRadius: "48% 48%",
+                    borderTopRightRadius: "48% 48%",
+                    borderBottomLeftRadius: "52% 52%",
+                    borderBottomRightRadius: "52% 52%",
+                  }}
+                />
+                {/* 顶部尖角 */}
+                <span
+                  className={`absolute top-0 left-1/2 -translate-x-1/2 -translate-y-[5px] w-0 h-0 border-l-[5px] border-r-[5px] border-t-[7px] border-l-transparent border-r-transparent transition-all duration-300 ${
+                    isActive ? "border-t-[var(--primary)]/40" : "border-t-[var(--border)]/25 group-hover:border-t-[var(--primary)]/30"
+                  }`}
+                />
+                {/* 底部小尾巴 */}
+                <span
+                  className={`absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-[3px] w-px transition-all duration-300 ${
+                    isActive ? "h-[5px] bg-[var(--primary)]/40" : "h-[3px] bg-[var(--border)]/25 group-hover:h-[4px] group-hover:bg-[var(--primary)]/30"
+                  }`}
+                />
                 <span className="relative z-[1]">{item.label}</span>
               </a>
             );
