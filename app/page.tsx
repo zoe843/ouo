@@ -2,33 +2,36 @@ import React from "react";
 import { getRecentEssays } from "@/lib/essays";
 import { getRecentPhotos } from "@/lib/photos";
 import EssayCard from "@/components/EssayCard";
+import MurmurSidebar from "@/components/MurmurSidebar";
 
 export default function HomePage() {
   const recentEssays = getRecentEssays(3);
   const recentPhotos = getRecentPhotos(6);
 
   return (
-    <div className="max-w-3xl mx-auto px-6">
-      {/* Hero */}
-      <section className="pt-24 pb-16 text-center animate-float-up">
-        <h1 className="text-3xl md:text-4xl font-light tracking-widest text-[var(--foreground)]">
-          雨落花庭
-        </h1>
-        <div className="mt-8 flex justify-center gap-6">
-          <a
-            href="/essays"
-            className="px-6 py-2 rounded-full border border-[var(--border)] text-sm text-[var(--foreground)]/70 hover:text-[var(--primary)] hover:border-[var(--primary)]/30 transition-all duration-300"
-          >
-            看看随笔
-          </a>
-          <a
-            href="/photos"
-            className="px-6 py-2 rounded-full border border-[var(--border)] text-sm text-[var(--foreground)]/70 hover:text-[var(--primary)] hover:border-[var(--primary)]/30 transition-all duration-300"
-          >
-            翻翻照片
-          </a>
-        </div>
-      </section>
+    <div className="flex gap-8 max-w-6xl mx-auto px-6">
+      {/* 主内容 */}
+      <div className="flex-1 min-w-0 pt-24 pb-16">
+        {/* Hero */}
+        <section className="text-center animate-float-up mb-16">
+          <h1 className="text-3xl md:text-4xl font-light tracking-widest text-[var(--foreground)]">
+            雨落花庭
+          </h1>
+          <div className="mt-8 flex justify-center gap-6">
+            <a
+              href="/essays"
+              className="px-6 py-2 rounded-full border border-[var(--border)] text-sm text-[var(--foreground)]/70 hover:text-[var(--primary)] hover:border-[var(--primary)]/30 transition-all duration-300"
+            >
+              看看随笔
+            </a>
+            <a
+              href="/photos"
+              className="px-6 py-2 rounded-full border border-[var(--border)] text-sm text-[var(--foreground)]/70 hover:text-[var(--primary)] hover:border-[var(--primary)]/30 transition-all duration-300"
+            >
+              翻翻照片
+            </a>
+          </div>
+        </section>
 
       {/* Latest Essays */}
       {recentEssays.length > 0 && (
@@ -84,6 +87,10 @@ export default function HomePage() {
           </div>
         </section>
       )}
-    </div>
-  );
-}
+
+        </div>
+        {/* 碎碎念侧边栏 */}
+        <MurmurSidebar />
+      </div>
+    );
+  }

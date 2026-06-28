@@ -3,6 +3,7 @@ import React from "react";
 const navItems = [
   { href: "/", label: "首页" },
   { href: "/essays", label: "随笔" },
+  { href: "/murmurs", label: "碎碎念" },
   { href: "/photos", label: "照片" },
   { href: "/about", label: "关于" },
 ];
