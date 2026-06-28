@@ -1,8 +1,8 @@
-import { getAllPhotos } from "@/lib/photos";
+import { getAllSeries } from "@/lib/photos";
 import PhotoGallery from "@/components/PhotoGallery";
 
 export default function PhotosPage() {
-  const photos = getAllPhotos();
+  const series = getAllSeries();
 
   return (
     <div className="max-w-4xl mx-auto px-6 pt-20 pb-10">
@@ -18,7 +18,7 @@ export default function PhotosPage() {
         </p>
       </div>
 
-      <PhotoGallery photos={photos} />
+      <PhotoGallery series={series} />
     </div>
   );
 }
