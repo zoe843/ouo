@@ -93,7 +93,7 @@ export default function HomePage() {
               雨落花庭
             </h1>
             <p className="mt-6 text-sm md:text-base text-[var(--muted)] font-light tracking-wider leading-relaxed max-w-sm mx-auto">
-              某些安静的时刻 · 一些文字 · 几张照片
+              {/* subtitle removed */}
             </p>
           </div>
 
