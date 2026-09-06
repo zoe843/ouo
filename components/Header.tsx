@@ -16,7 +16,7 @@ export default function Header() {
 
   return (
     <header className="sticky top-0 z-50 backdrop-blur-lg bg-[var(--background)]/80 border-b border-[var(--border)]/30">
-      <div className="max-w-3xl mx-auto px-6 h-16 flex items-center justify-between">
+      <div className="max-w-3xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
         <a
           href="/"
           className="flex items-center gap-2 text-lg font-light tracking-wider text-[var(--foreground)] hover:text-[var(--primary)] transition-colors duration-300 group"
@@ -34,9 +34,9 @@ export default function Header() {
           >
             <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
           </svg>
-          <span>雨落花庭</span>
+          <span className="whitespace-nowrap">雨落花庭</span>
         </a>
-        <nav className="flex items-center gap-3">
+        <nav className="flex items-center gap-1.5 sm:gap-3">
           {navItems.map((item) => {
             const isActive =
               item.href === "/"
@@ -47,7 +47,7 @@ export default function Header() {
               <a
                 key={item.href}
                 href={item.href}
-                className={`group relative flex flex-col items-center px-3 py-1.5 text-sm tracking-wider transition-colors duration-300 ${
+                className={`group relative flex flex-col items-center px-2 sm:px-3 py-1.5 text-sm tracking-wider whitespace-nowrap transition-colors duration-300 ${
                   isActive ? "text-[var(--foreground)]" : "text-[var(--muted)] hover:text-[var(--foreground)]"
                 }`}
               >

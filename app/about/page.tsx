@@ -1,11 +1,17 @@
+import type { Metadata } from "next";
 import MDXContent from "@/components/MDXContent";
+
+export const metadata: Metadata = {
+  title: "关于",
+  description: "关于这个驿站，和驿站背后的人",
+};
 
 const aboutSource = `
 ## 关于我
 
 你好，我是雨落花庭的掌柜。
 
-目前在西安一所211读电子信息工程，大二。梦想很朴素——有花不完的米。
+目前在西安一所211读电子信息工程，大三。梦想很朴素——有花不完的米。
 
 中学时代接触过不少文学相关的东西，那段时间在心里埋下了种子，大概也是后来想做「雨落花庭」的缘由吧。现在的生活说不上精彩，甚至有点枯燥，但好在我还有几个聊得来的朋友，这让日子不至于太闷。
 

@@ -1,5 +1,11 @@
+import type { Metadata } from "next";
 import { getAllEssays } from "@/lib/essays";
 import EssayCard from "@/components/EssayCard";
+
+export const metadata: Metadata = {
+  title: "随笔",
+  description: "一些随手写下的文字",
+};
 
 export default function EssaysPage() {
   const essays = getAllEssays();

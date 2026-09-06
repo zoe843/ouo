@@ -69,6 +69,7 @@ function MusicIcon({ playing }: { playing: boolean }) {
 
 export default function MusicPlayer() {
   const [playing, setPlaying] = useState(false);
+  const [nudge, setNudge] = useState(false);
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const playingRef = useRef(false);
 
@@ -92,7 +93,8 @@ export default function MusicPlayer() {
       audio.play().then(() => {
         setPlaying(true);
       }).catch(() => {
-        // 浏览器阻止 autoplay，静默降级；进度已恢复，用户点击即可继续
+        // 浏览器阻止 autoplay：进度已恢复，呼吸灯提醒用户点一下即可继续
+        setNudge(true);
       });
     }
 
@@ -157,6 +159,7 @@ export default function MusicPlayer() {
     } else {
       audio.play().then(() => {
         setPlaying(true);
+        setNudge(false);
         writeStoredState({
           playing: true,
           currentTime: audio.currentTime,
@@ -171,7 +174,7 @@ export default function MusicPlayer() {
   return (
     <button
       onClick={toggle}
-      title={playing ? "暂停音乐" : "播放音乐"}
+      title={playing ? "暂停音乐" : nudge ? "上次播放被浏览器暂停，点这里继续" : "播放音乐"}
       className={
         "fixed bottom-6 right-6 z-[200] w-10 h-10 rounded-full flex items-center justify-center border shadow-lg backdrop-blur-md transition-all duration-500 hover:scale-110 "
         + (playing
@@ -179,6 +182,12 @@ export default function MusicPlayer() {
           : "bg-[var(--card)]/80 border-[var(--border)]/40 text-[var(--muted)]")
       }
     >
+      {nudge && !playing && (
+        <span
+          className="absolute inset-0 rounded-full bg-[var(--primary)]/30 animate-ping"
+          aria-hidden="true"
+        />
+      )}
       <MusicIcon playing={playing} />
     </button>
   );

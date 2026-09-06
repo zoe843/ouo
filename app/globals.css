@@ -38,11 +38,18 @@
     background-color: #0a1628;
     background-image:
       linear-gradient(180deg, rgba(10, 22, 40, 0.3) 0%, rgba(10, 22, 40, 0.45) 100%),
-      url("/images/bg.jpg");
+      url("/images/bg.webp");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     background-attachment: fixed;
+  }
+
+  /* iOS Safari 不支持 fixed 背景且持续重绘费电，小屏/触屏改为随页滚动 */
+  @media (hover: none), (max-width: 768px) {
+    body {
+      background-attachment: scroll;
+    }
   }
 
   ::selection {
