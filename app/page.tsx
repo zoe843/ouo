@@ -181,7 +181,7 @@ export default function HomePage() {
                   className="relative col-span-2 aspect-[4/3] rounded-lg overflow-hidden bg-[var(--card)] border border-[var(--border)]/30 hover:-translate-y-1 transition-all duration-500 ease-out card-glow group"
                 >
                   <img
-                    src={recentPhotos[0].url}
+                    src={recentPhotos[0].thumb ?? recentPhotos[0].url}
                     alt={recentPhotos[0].title}
                     loading="lazy"
                     className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
@@ -201,7 +201,7 @@ export default function HomePage() {
                   className="relative aspect-square rounded-lg overflow-hidden bg-[var(--card)] border border-[var(--border)]/30 hover:-translate-y-1 transition-all duration-500 ease-out card-glow group"
                 >
                   <img
-                    src={photo.url}
+                    src={photo.thumb ?? photo.url}
                     alt={photo.title}
                     loading="lazy"
                     className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"

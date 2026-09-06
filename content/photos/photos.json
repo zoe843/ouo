@@ -3,30 +3,50 @@
     "url": "/images/photos/signal-exam-3.webp",
     "title": "信号与系统考后随拍",
     "date": "2026-06-27",
-    "tags": ["日常", "校园"]
+    "tags": [
+      "日常",
+      "校园"
+    ],
+    "thumb": "/images/photos/thumbs/signal-exam-3.webp"
   },
   {
     "url": "/images/photos/signal-exam-2.webp",
     "title": "信号与系统考后随拍",
     "date": "2026-06-27",
-    "tags": ["日常", "校园"]
+    "tags": [
+      "日常",
+      "校园"
+    ],
+    "thumb": "/images/photos/thumbs/signal-exam-2.webp"
   },
   {
     "url": "/images/photos/signal-exam-1.webp",
     "title": "信号与系统考后随拍",
     "date": "2026-06-27",
-    "tags": ["日常", "校园"]
+    "tags": [
+      "日常",
+      "校园"
+    ],
+    "thumb": "/images/photos/thumbs/signal-exam-1.webp"
   },
   {
     "url": "/images/photos/summer-1.webp",
     "title": "我能否把你比作夏天",
     "date": "2026-06-11",
-    "tags": ["夏天", "风景"]
+    "tags": [
+      "夏天",
+      "风景"
+    ],
+    "thumb": "/images/photos/thumbs/summer-1.webp"
   },
   {
     "url": "/images/photos/summer-2.webp",
     "title": "我能否把你比作夏天",
     "date": "2026-06-11",
-    "tags": ["夏天", "风景"]
+    "tags": [
+      "夏天",
+      "风景"
+    ],
+    "thumb": "/images/photos/thumbs/summer-2.webp"
   }
 ]

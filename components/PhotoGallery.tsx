@@ -145,7 +145,7 @@ export default function PhotoGallery({ series }: { series: PhotoSeries[] }) {
                     className="group relative aspect-[4/3] rounded-lg overflow-hidden bg-[var(--card)] border border-[var(--border)]/30 card-glow transition-all duration-500 ease-out hover:-translate-y-1"
                   >
                     <img
-                      src={photo.url}
+                      src={photo.thumb ?? photo.url}
                       alt={photo.title}
                       loading="lazy"
                       className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"

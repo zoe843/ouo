@@ -1,5 +1,11 @@
+import type { Metadata } from "next";
 import { getAllMurmurs } from "@/lib/murmurs";
 import MurmurCard from "@/components/MurmurCard";
+
+export const metadata: Metadata = {
+  title: "碎碎念",
+  description: "一些转瞬即逝的想法，趁它们还没溜走",
+};
 
 export default function MurmursPage() {
   const murmurs = getAllMurmurs();

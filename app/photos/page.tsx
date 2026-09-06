@@ -1,5 +1,11 @@
+import type { Metadata } from "next";
 import { getAllSeries } from "@/lib/photos";
 import PhotoGallery from "@/components/PhotoGallery";
+
+export const metadata: Metadata = {
+  title: "照片",
+  description: "用镜头记录下一些瞬间",
+};
 
 export default function PhotosPage() {
   const series = getAllSeries();

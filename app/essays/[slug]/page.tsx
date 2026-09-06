@@ -16,7 +16,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const essay = getEssayBySlug(slug);
   if (!essay) return { title: "未找到" };
   return {
-    title: `${essay.title} - 雨落花庭`,
+    title: essay.title,
     description: essay.description,
   };
 }
