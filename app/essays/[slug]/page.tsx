@@ -18,6 +18,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title: essay.title,
     description: essay.description,
+    openGraph: {
+      type: "article",
+      publishedTime: essay.date || undefined,
+      tags: essay.tags,
+      images: [{ url: "/og.jpg", width: 1200, height: 630, alt: essay.title }],
+    },
   };
 }
 

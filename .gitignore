@@ -42,3 +42,18 @@ next-env.d.ts
 
 .vercel
 photos-originals/
+
+# 课程作业 / 实验残留,仅保留在本地
+/ex01/
+/ex02/
+/ex03/
+/ex04/
+/ex05/
+/ex06/
+/ex07/
+/ex08/
+/ex09/
+/lab01/
+/hello.c
+/sketch_may8a.ino
+/c7400538fd4b87f516d97d1bd2774286.jpg

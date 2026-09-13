@@ -78,15 +78,23 @@ export default function MusicPlayer() {
     playingRef.current = playing;
   }, [playing]);
 
-  useEffect(() => {
-    const audio = new Audio("/music.mp3");
-    audio.loop = true;
-    audio.volume = 0.4;
-    audioRef.current = audio;
+  // 懒加载:首次真正需要播放(用户点击 / 恢复上次播放)才创建 Audio,
+  // 否则每个访客一进站就会开始下载 3.4MB 的 mp3
+  const ensureAudio = useCallback((): HTMLAudioElement => {
+    if (!audioRef.current) {
+      const audio = new Audio("/music.mp3");
+      audio.loop = true;
+      audio.volume = 0.4;
+      audioRef.current = audio;
+    }
+    return audioRef.current;
+  }, []);
 
-    // ---- 1. 尝试恢复上次播放状态 ----
+  useEffect(() => {
+    // ---- 1. 尝试恢复上次播放状态(仅上次在播时才创建 Audio) ----
     const stored = readStoredState();
     if (stored && stored.playing) {
+      const audio = ensureAudio();
       if (stored.currentTime > 0) {
         audio.currentTime = stored.currentTime;
       }
@@ -142,15 +150,14 @@ export default function MusicPlayer() {
           currentTime: audioRef.current.currentTime,
           timestamp: Date.now(),
         });
+        audioRef.current.pause();
+        audioRef.current = null;
       }
-      audio.pause();
-      audioRef.current = null;
     };
-  }, []);
+  }, [ensureAudio]);
 
   const toggle = useCallback(() => {
-    const audio = audioRef.current;
-    if (!audio) return;
+    const audio = ensureAudio();
 
     if (playing) {
       audio.pause();
@@ -169,7 +176,7 @@ export default function MusicPlayer() {
         // play() 失败，不更新 UI
       });
     }
-  }, [playing]);
+  }, [playing, ensureAudio]);
 
   return (
     <button

@@ -15,6 +15,10 @@ export const metadata: Metadata = {
     type: "website",
     siteName: "雨落花庭",
     locale: "zh_CN",
+    images: [{ url: "/og.jpg", width: 1200, height: 630, alt: "雨落花庭" }],
+  },
+  twitter: {
+    card: "summary_large_image",
   },
 };
 
@@ -31,6 +35,7 @@ export default function RootLayout({
     <html lang="zh-CN" className="h-full antialiased">
       <head>
         <link rel="preload" as="image" href="/images/bg.webp" fetchPriority="high" />
+        <link rel="alternate" type="application/rss+xml" title="雨落花庭" href="/rss.xml" />
       </head>
       <body className="min-h-full flex flex-col text-[var(--foreground)]">
         <Header />

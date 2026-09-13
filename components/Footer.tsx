@@ -16,6 +16,9 @@ export default function Footer() {
           <a href="/about" className="text-xs text-[var(--muted)] hover:text-[var(--foreground)] transition-colors">
             关于
           </a>
+          <a href="/rss.xml" className="text-xs text-[var(--muted)] hover:text-[var(--foreground)] transition-colors">
+            RSS
+          </a>
         </nav>
 
         {/* 引用 */}

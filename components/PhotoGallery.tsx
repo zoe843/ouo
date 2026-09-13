@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useCallback, useEffect } from "react";
+import { useState, useRef, useCallback, useEffect } from "react";
 import type { PhotoSeries } from "@/lib/photos";
 
 const SERIES_PER_PAGE = 3;
@@ -12,6 +12,7 @@ export default function PhotoGallery({ series }: { series: PhotoSeries[] }) {
     photoIdx: number;
   } | null>(null);
   const [page, setPage] = useState(0);
+  const touchStartX = useRef<number | null>(null);
 
   // 排序后
   const sorted =
@@ -78,6 +79,19 @@ export default function PhotoGallery({ series }: { series: PhotoSeries[] }) {
     window.addEventListener("keydown", h);
     return () => window.removeEventListener("keydown", h);
   }, [selected, goNext, goPrev]);
+
+  // 移动端左右滑动翻图
+  const onTouchStart = (e: React.TouchEvent) => {
+    touchStartX.current = e.touches[0].clientX;
+  };
+  const onTouchEnd = (e: React.TouchEvent) => {
+    if (touchStartX.current === null || selected === null) return;
+    const dx = e.changedTouches[0].clientX - touchStartX.current;
+    touchStartX.current = null;
+    if (Math.abs(dx) < 50) return;
+    if (dx < 0) goNext();
+    else goPrev();
+  };
 
   return (
     <>
@@ -201,6 +215,8 @@ export default function PhotoGallery({ series }: { series: PhotoSeries[] }) {
         <div
           className="fixed inset-0 z-[100] bg-black/90 backdrop-blur-sm flex items-center justify-center"
           onClick={close}
+          onTouchStart={onTouchStart}
+          onTouchEnd={onTouchEnd}
         >
           <button
             onClick={close}
