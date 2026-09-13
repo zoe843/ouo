@@ -3,14 +3,13 @@ cd /d "C:\Users\31170\feiyuluohua"
 
 echo.
 echo  ====================================
-echo   网站管理工具
+echo   Site manager
 echo  ====================================
+echo   1. local preview  (npm run dev)
+echo   2. build + push   (Vercel auto deploy)
+echo   3. show urls
 echo.
-echo  1. 本地预览
-echo  2. 部署上线 (推送 GitHub → Vercel)
-echo  3. 查看线上地址
-echo.
-set /p choice=请输入数字 (1/2/3):
+set /p choice=Pick 1/2/3:
 
 if "%choice%"=="1" goto preview
 if "%choice%"=="2" goto deploy
@@ -18,32 +17,36 @@ if "%choice%"=="3" goto urls
 goto end
 
 :preview
-echo 正在启动本地服务器...
+echo starting dev server...
 start "" "http://localhost:3000"
 npx next dev -p 3000
 goto end
 
 :deploy
-echo 正在构建...
+echo building...
 call npm run build
 if %ERRORLEVEL% NEQ 0 (
-  echo 构建失败！
+  echo BUILD FAILED
   pause
   goto end
 )
-echo 正在推送代码到 GitHub (Vercel 会自动部署)...
+echo pushing to GitHub (Vercel deploys automatically)...
 git add -A
 git commit -m "update %date% %time%"
 git push origin main
-echo 代码已推送，Vercel 将在 1-2 分钟内完成部署。
+if %ERRORLEVEL% NEQ 0 (
+  echo PUSH FAILED - turn on your VPN and run again
+  pause
+  goto end
+)
+echo pushed. Vercel will finish deploying in 1-2 min.
 echo.
 goto end
 
 :urls
 echo.
-echo  线上: https://rainbloom.xin
-echo        https://www.rainbloom.xin
-echo  仓库: https://github.com/zoe843/ouo
+echo  site: https://rainbloom.xin  /  https://www.rainbloom.xin
+echo  repo: https://github.com/zoe843/ouo
 echo.
 
 :end
