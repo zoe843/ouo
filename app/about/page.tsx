@@ -4,6 +4,7 @@ import MDXContent from "@/components/MDXContent";
 export const metadata: Metadata = {
   title: "关于",
   description: "关于这个驿站，和驿站背后的人",
+  alternates: { canonical: "/about" },
 };
 
 const aboutSource = `

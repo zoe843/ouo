@@ -18,6 +18,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title: essay.title,
     description: essay.description,
+    alternates: { canonical: `/essays/${slug}` },
     openGraph: {
       type: "article",
       publishedTime: essay.date || undefined,
@@ -40,8 +41,24 @@ export default async function EssayPage({ params }: Props) {
   const prev = idx < essays.length - 1 ? essays[idx + 1] : null;
   const next = idx > 0 ? essays[idx - 1] : null;
 
+  const articleJsonLd = JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    headline: essay.title,
+    description: essay.description || undefined,
+    datePublished: essay.date || undefined,
+    inLanguage: "zh-CN",
+    author: { "@type": "Person", name: "雨落花庭" },
+    mainEntityOfPage: `https://www.rainbloom.xin/essays/${slug}`,
+    keywords: essay.tags.length > 0 ? essay.tags.join(", ") : undefined,
+  });
+
   return (
     <div className="max-w-3xl mx-auto px-6 pt-20 pb-10">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: articleJsonLd }}
+      />
       <article className="animate-float-up">
         <header className="mb-12 text-center">
           <h1 className="text-3xl font-light tracking-wider text-[var(--foreground)]">

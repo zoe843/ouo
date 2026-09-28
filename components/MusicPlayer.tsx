@@ -182,6 +182,7 @@ export default function MusicPlayer() {
     <button
       onClick={toggle}
       title={playing ? "暂停音乐" : nudge ? "上次播放被浏览器暂停，点这里继续" : "播放音乐"}
+      aria-label={playing ? "暂停音乐" : "播放音乐"}
       className={
         "fixed bottom-6 right-6 z-[200] w-10 h-10 rounded-full flex items-center justify-center border shadow-lg backdrop-blur-md transition-all duration-500 hover:scale-110 "
         + (playing

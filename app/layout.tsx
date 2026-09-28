@@ -26,6 +26,16 @@ export const viewport: Viewport = {
   themeColor: "#0a1628",
 };
 
+const websiteJsonLd = JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  name: "雨落花庭",
+  alternateName: "飞雨落花的驿栈",
+  url: "https://www.rainbloom.xin",
+  description: "一个存放随笔与照片的小站",
+  inLanguage: "zh-CN",
+});
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -36,6 +46,10 @@ export default function RootLayout({
       <head>
         <link rel="preload" as="image" href="/images/bg.webp" fetchPriority="high" />
         <link rel="alternate" type="application/rss+xml" title="雨落花庭" href="/rss.xml" />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: websiteJsonLd }}
+        />
       </head>
       <body className="min-h-full flex flex-col text-[var(--foreground)]">
         <Header />

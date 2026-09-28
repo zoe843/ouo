@@ -5,6 +5,7 @@ import PhotoGallery from "@/components/PhotoGallery";
 export const metadata: Metadata = {
   title: "照片",
   description: "用镜头记录下一些瞬间",
+  alternates: { canonical: "/photos" },
 };
 
 export default function PhotosPage() {

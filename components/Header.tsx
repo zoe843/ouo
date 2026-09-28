@@ -47,6 +47,7 @@ export default function Header() {
               <a
                 key={item.href}
                 href={item.href}
+                aria-current={isActive ? "page" : undefined}
                 className={`group relative flex flex-col items-center px-2 sm:px-3 py-1.5 text-sm tracking-wider whitespace-nowrap transition-colors duration-300 ${
                   isActive ? "text-[var(--foreground)]" : "text-[var(--muted)] hover:text-[var(--foreground)]"
                 }`}

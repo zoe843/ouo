@@ -80,6 +80,34 @@ export default function PhotoGallery({ series }: { series: PhotoSeries[] }) {
     return () => window.removeEventListener("keydown", h);
   }, [selected, goNext, goPrev]);
 
+  // 灯箱打开时锁定背景滚动，关闭时恢复
+  useEffect(() => {
+    if (selected === null) return;
+    const prev = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.body.style.overflow = prev;
+    };
+  }, [selected]);
+
+  // 预加载当前照片相邻的原图，翻到下一张时秒开
+  useEffect(() => {
+    if (selected === null) return;
+    const flatIdx = flatPhotos.findIndex(
+      (f) =>
+        f.seriesIdx === selected.seriesIdx &&
+        f.photoIdx === selected.photoIdx
+    );
+    if (flatIdx < 0) return;
+    for (const offset of [1, flatPhotos.length - 1]) {
+      const neighbor = flatPhotos[(flatIdx + offset) % flatPhotos.length];
+      if (neighbor) {
+        const img = new Image();
+        img.src = neighbor.photo.url;
+      }
+    }
+  }, [selected, flatPhotos]);
+
   // 移动端左右滑动翻图
   const onTouchStart = (e: React.TouchEvent) => {
     touchStartX.current = e.touches[0].clientX;
@@ -165,7 +193,7 @@ export default function PhotoGallery({ series }: { series: PhotoSeries[] }) {
                       className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent flex items-end p-3">
-                      <span className="text-white text-xs tracking-wide font-light translate-y-2 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300 ease-out">
+                      <span className="photo-caption text-white text-xs tracking-wide font-light translate-y-2 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300 ease-out">
                         {photo.title}
                       </span>
                     </div>
@@ -220,18 +248,21 @@ export default function PhotoGallery({ series }: { series: PhotoSeries[] }) {
         >
           <button
             onClick={close}
+            aria-label="关闭大图"
             className="absolute top-6 right-6 text-white/60 hover:text-white text-2xl font-light transition-colors z-10"
           >
             ✕
           </button>
           <button
             onClick={(e) => { e.stopPropagation(); goPrev(); }}
+            aria-label="上一张"
             className="absolute left-4 text-white/60 hover:text-white text-3xl font-light transition-colors"
           >
             ‹
           </button>
           <button
             onClick={(e) => { e.stopPropagation(); goNext(); }}
+            aria-label="下一张"
             className="absolute right-4 text-white/60 hover:text-white text-3xl font-light transition-colors"
           >
             ›
@@ -247,7 +278,15 @@ export default function PhotoGallery({ series }: { series: PhotoSeries[] }) {
                   f.seriesIdx === selected.seriesIdx &&
                   f.photoIdx === selected.photoIdx
               )?.photo.url ?? ""}
-              alt=""
+              alt={(() => {
+                const cur = flatPhotos.find(
+                  (f) =>
+                    f.seriesIdx === selected.seriesIdx &&
+                    f.photoIdx === selected.photoIdx
+                );
+                return cur?.photo.title ?? "";
+              })()}
+              decoding="async"
               className="max-w-full max-h-[80vh] rounded-xl object-contain shadow-2xl"
             />
             {(() => {

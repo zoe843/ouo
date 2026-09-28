@@ -1,8 +1,13 @@
 import React from "react";
+import type { Metadata } from "next";
 import { getRecentEssays } from "@/lib/essays";
 import { getRecentPhotos } from "@/lib/photos";
 import EssayCard from "@/components/EssayCard";
 import MurmurSidebar from "@/components/MurmurSidebar";
+
+export const metadata: Metadata = {
+  alternates: { canonical: "/" },
+};
 
 /* ——— 雨滴装饰 SVG ——— */
 const RainDrops = () => (
@@ -183,11 +188,12 @@ export default function HomePage() {
                   <img
                     src={recentPhotos[0].thumb ?? recentPhotos[0].url}
                     alt={recentPhotos[0].title}
-                    loading="lazy"
+                    loading="eager"
+                    fetchPriority="high"
                     className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/65 via-black/15 to-transparent flex items-end p-4">
-                    <span className="text-white text-sm tracking-wide font-light translate-y-2 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300 ease-out">
+                    <span className="photo-caption text-white text-sm tracking-wide font-light translate-y-2 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300 ease-out">
                       {recentPhotos[0].title}
                     </span>
                   </div>
@@ -207,7 +213,7 @@ export default function HomePage() {
                     className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/65 via-black/15 to-transparent flex items-end p-3">
-                    <span className="text-white text-xs tracking-wide font-light translate-y-2 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300 ease-out">
+                    <span className="photo-caption text-white text-xs tracking-wide font-light translate-y-2 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300 ease-out">
                       {photo.title}
                     </span>
                   </div>

@@ -5,6 +5,7 @@ import EssayCard from "@/components/EssayCard";
 export const metadata: Metadata = {
   title: "随笔",
   description: "一些随手写下的文字",
+  alternates: { canonical: "/essays" },
 };
 
 export default function EssaysPage() {
