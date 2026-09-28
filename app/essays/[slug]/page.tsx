@@ -54,14 +54,14 @@ export default async function EssayPage({ params }: Props) {
   });
 
   return (
-    <div className="max-w-3xl mx-auto px-6 pt-20 pb-10">
+    <div className="max-w-2xl mx-auto px-6 pt-20 pb-10">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: articleJsonLd }}
       />
       <article className="animate-float-up">
         <header className="mb-12 text-center">
-          <h1 className="text-3xl font-light tracking-wider text-[var(--foreground)]">
+          <h1 className="font-serif text-3xl font-light tracking-wider text-[var(--foreground)]">
             {essay.title}
           </h1>
           <div className="flex items-center justify-center gap-3 mt-4 text-sm text-[var(--muted)] font-light">

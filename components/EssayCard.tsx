@@ -18,7 +18,7 @@ export default function EssayCard({ essay }: { essay: EssayMeta }) {
         <div className="relative z-[1] pl-4">
           {/* 标题 + 日期 */}
           <div className="flex items-baseline justify-between gap-4">
-            <h3 className="text-lg font-light tracking-wide text-[var(--foreground)] group-hover:text-[var(--primary)] transition-colors duration-300">
+            <h3 className="font-serif text-lg font-light tracking-wide text-[var(--foreground)] group-hover:text-[var(--primary)] transition-colors duration-300">
               {essay.title}
             </h3>
             {essay.date && (

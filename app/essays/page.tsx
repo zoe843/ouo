@@ -16,7 +16,7 @@ export default function EssaysPage() {
       <div className="mb-12 animate-float-up">
         <div className="flex items-center gap-3">
           <span className="w-1 h-6 rounded-full bg-[var(--primary)]/60 inline-block" />
-          <h1 className="text-3xl font-light tracking-wider text-[var(--foreground)]">
+          <h1 className="font-serif text-3xl font-light tracking-wider text-[var(--foreground)]">
             随笔
           </h1>
         </div>

@@ -156,7 +156,7 @@ export default function PhotoGallery({ series }: { series: PhotoSeries[] }) {
         {pageSeries.map((s, si) => (
           <section key={s.key} className="animate-float-up">
             {/* 标题 — 居左 */}
-            <h2 className="text-xl font-light tracking-wider text-[var(--foreground)] mb-1">
+            <h2 className="font-serif text-xl font-light tracking-wider text-[var(--foreground)] mb-1">
               {s.title}
             </h2>
             {/* 日期 */}
@@ -297,13 +297,20 @@ export default function PhotoGallery({ series }: { series: PhotoSeries[] }) {
               );
               const curIdx = flatPhotos.indexOf(cur!);
               return (
-                <p className="text-white/80 text-sm font-light tracking-wide">
-                  {cur?.photo.title}
-                  <span className="text-white/40 ml-2">{cur?.photo.date}</span>
-                  <span className="text-white/40 ml-2">
-                    {curIdx + 1} / {flatPhotos.length}
-                  </span>
-                </p>
+                <div className="flex flex-col items-center gap-1">
+                  <p className="text-white/80 text-sm font-light tracking-wide">
+                    {cur?.photo.title}
+                    <span className="text-white/40 ml-2">{cur?.photo.date}</span>
+                    <span className="text-white/40 ml-2">
+                      {curIdx + 1} / {flatPhotos.length}
+                    </span>
+                  </p>
+                  {cur?.photo.exif && (
+                    <p className="text-white/40 text-xs tracking-wider tabular-nums">
+                      {cur.photo.exif}
+                    </p>
+                  )}
+                </div>
               );
             })()}
           </div>

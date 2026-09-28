@@ -1,4 +1,4 @@
-import { getAllEssays } from "@/lib/essays";
+import { getAllEssays, getEssayBySlug } from "@/lib/essays";
 
 export const dynamic = "force-static";
 
@@ -18,6 +18,7 @@ export function GET(): Response {
   const items = essays
     .map((e) => {
       const url = `${BASE}/essays/${e.slug}`;
+      const full = getEssayBySlug(e.slug); // 列表接口不带正文,单取一次
       return [
         "    <item>",
         `      <title>${escapeXml(e.title)}</title>`,
@@ -25,6 +26,10 @@ export function GET(): Response {
         `      <guid isPermaLink="true">${url}</guid>`,
         e.description
           ? `      <description>${escapeXml(e.description)}</description>`
+          : null,
+        // 全文正文：CDATA 包 markdown 原文，主流阅读器可直接渲染
+        full?.content
+          ? `      <content:encoded><![CDATA[${full.content.replace(/\]\]>/g, "]]]]><![CDATA[>")}]]></content:encoded>`
           : null,
         e.date
           ? `      <pubDate>${new Date(e.date).toUTCString()}</pubDate>`
@@ -37,7 +42,7 @@ export function GET(): Response {
     .join("\n");
 
   const xml = `<?xml version="1.0" encoding="UTF-8"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>雨落花庭</title>
     <link>${BASE}</link>

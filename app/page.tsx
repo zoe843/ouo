@@ -63,6 +63,42 @@ const RainDrops = () => (
   </svg>
 );
 
+/* ——— 落花 ——— 夜色里缓缓飘过的几片花瓣（CSS 动画，reduced-motion 下自动静止在屏外） ——— */
+const PETALS = [
+  { left: "10%", size: 13, fall: 13, sway: 3.2, delay: 0, o: 0.55 },
+  { left: "32%", size: 10, fall: 17, sway: 2.6, delay: 6, o: 0.4 },
+  { left: "63%", size: 14, fall: 15, sway: 3.6, delay: 3, o: 0.5 },
+  { left: "86%", size: 11, fall: 19, sway: 2.9, delay: 9, o: 0.42 },
+];
+
+const FallenPetals = () => (
+  <div className="absolute inset-0 pointer-events-none select-none" aria-hidden="true">
+    {PETALS.map((p, i) => (
+      <span
+        key={i}
+        className="petal"
+        style={{
+          left: p.left,
+          opacity: p.o,
+          animationDuration: `${p.fall}s`,
+          animationDelay: `${p.delay}s`,
+        }}
+      >
+        <span
+          className="bg-gradient-to-br from-[#f0b7cb]/60 to-[#d68caa]/25"
+          style={{
+            width: p.size,
+            height: p.size,
+            borderRadius: "80% 0 80% 80%",
+            animationDuration: `${p.sway}s`,
+            boxShadow: "0 0 6px rgba(240,183,203,0.25)",
+          }}
+        />
+      </span>
+    ))}
+  </div>
+);
+
 export default function HomePage() {
   const recentEssays = getRecentEssays(3);
   const recentPhotos = getRecentPhotos(6);
@@ -82,6 +118,9 @@ export default function HomePage() {
 
           {/* 雨丝 SVG 装饰 */}
           <RainDrops />
+
+          {/* 落花 */}
+          <FallenPetals />
 
           {/* 标题 */}
           <div className="relative">
