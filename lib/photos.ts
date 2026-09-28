@@ -4,6 +4,7 @@ export interface PhotoItem {
   title: string;
   date: string;
   tags: string[];
+  exif?: string;    // 拍摄参数("ƒ/1.9 · 1/10s · ISO 3200 · 24mm"),scripts/extract_exif.py 写入
 }
 
 import fs from "fs";
