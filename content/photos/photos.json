@@ -25,7 +25,8 @@
       "日常",
       "校园"
     ],
-    "thumb": "/images/photos/thumbs/signal-exam-3.webp"
+    "thumb": "/images/photos/thumbs/signal-exam-3.webp",
+    "exif": "ƒ/1.9 · 1/10s · ISO 3200 · 24mm"
   },
   {
     "url": "/images/photos/signal-exam-2.webp",
@@ -35,7 +36,8 @@
       "日常",
       "校园"
     ],
-    "thumb": "/images/photos/thumbs/signal-exam-2.webp"
+    "thumb": "/images/photos/thumbs/signal-exam-2.webp",
+    "exif": "ƒ/1.9 · 1/13s · ISO 2000 · 24mm"
   },
   {
     "url": "/images/photos/signal-exam-1.webp",
@@ -45,7 +47,8 @@
       "日常",
       "校园"
     ],
-    "thumb": "/images/photos/thumbs/signal-exam-1.webp"
+    "thumb": "/images/photos/thumbs/signal-exam-1.webp",
+    "exif": "ƒ/2.2 · 0.3s · ISO 2000 · 16mm"
   },
   {
     "url": "/images/photos/summer-1.webp",
@@ -55,7 +58,8 @@
       "夏天",
       "风景"
     ],
-    "thumb": "/images/photos/thumbs/summer-1.webp"
+    "thumb": "/images/photos/thumbs/summer-1.webp",
+    "exif": "ƒ/1.9 · 1/1300s · ISO 50 · 24mm"
   },
   {
     "url": "/images/photos/summer-2.webp",
@@ -65,6 +69,65 @@
       "夏天",
       "风景"
     ],
-    "thumb": "/images/photos/thumbs/summer-2.webp"
+    "thumb": "/images/photos/thumbs/summer-2.webp",
+    "exif": "ƒ/1.9 · 1/2400s · ISO 50 · 24mm"
+  },
+  {
+    "url": "/images/photos/g2298-platform.webp",
+    "title": "07:12，开往厦门北",
+    "date": "2025-01",
+    "tags": [
+      "旅途",
+      "清晨",
+      "厦门"
+    ]
+  },
+  {
+    "url": "/images/photos/night-flight-xiamen.webp",
+    "title": "夜航厦门",
+    "date": "2025-01",
+    "tags": [
+      "旅途",
+      "夜",
+      "厦门"
+    ]
+  },
+  {
+    "url": "/images/photos/temple-roof-plane.webp",
+    "title": "屋脊上的航班",
+    "date": "2025-01",
+    "tags": [
+      "厦门",
+      "天空"
+    ]
+  },
+  {
+    "url": "/images/photos/xiamen-skyline.webp",
+    "title": "隔海望厦门",
+    "date": "2025-01",
+    "tags": [
+      "厦门",
+      "海",
+      "城市"
+    ]
+  },
+  {
+    "url": "/images/photos/xmu-firecracker.webp",
+    "title": "回高中看炮仗花",
+    "date": "2025-01",
+    "tags": [
+      "校园",
+      "花",
+      "回忆"
+    ]
+  },
+  {
+    "url": "/images/photos/train-over-sea-bridge.webp",
+    "title": "驶过落日的列车",
+    "date": "2024-10-01",
+    "tags": [
+      "旅途",
+      "日落"
+    ]
   }
 ]
