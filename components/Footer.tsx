@@ -1,21 +1,22 @@
+import Link from "next/link";
 export default function Footer() {
   return (
     <footer className="border-t border-[var(--border)]/30 mt-20">
       <div className="max-w-3xl mx-auto px-6 py-8 text-center space-y-4">
         {/* 导航 */}
         <nav className="flex justify-center gap-6">
-          <a href="/" className="text-xs text-[var(--muted)] hover:text-[var(--foreground)] transition-colors">
+          <Link prefetch={false} href="/" className="text-xs text-[var(--muted)] hover:text-[var(--foreground)] transition-colors">
             首页
-          </a>
-          <a href="/essays" className="text-xs text-[var(--muted)] hover:text-[var(--foreground)] transition-colors">
+          </Link>
+          <Link prefetch={false} href="/essays" className="text-xs text-[var(--muted)] hover:text-[var(--foreground)] transition-colors">
             随笔
-          </a>
-          <a href="/photos" className="text-xs text-[var(--muted)] hover:text-[var(--foreground)] transition-colors">
+          </Link>
+          <Link prefetch={false} href="/photos" className="text-xs text-[var(--muted)] hover:text-[var(--foreground)] transition-colors">
             照片
-          </a>
-          <a href="/about" className="text-xs text-[var(--muted)] hover:text-[var(--foreground)] transition-colors">
+          </Link>
+          <Link prefetch={false} href="/about" className="text-xs text-[var(--muted)] hover:text-[var(--foreground)] transition-colors">
             关于
-          </a>
+          </Link>
           <a href="/rss.xml" className="text-xs text-[var(--muted)] hover:text-[var(--foreground)] transition-colors">
             RSS
           </a>

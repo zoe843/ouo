@@ -1,3 +1,4 @@
+import Link from "next/link";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -44,18 +45,18 @@ export default function NotFound() {
       </p>
 
       <div className="flex justify-center gap-4 animate-float-up" style={{ animationDelay: "240ms" }}>
-        <a
+        <Link prefetch={false}
           href="/"
           className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full bg-[var(--primary)]/12 text-sm text-[var(--foreground)]/85 hover:text-[var(--foreground)] hover:bg-[var(--primary)]/22 hover:-translate-y-0.5 hover:shadow-[0_0_24px_rgba(74,158,255,0.2)] transition-all duration-300 ease-out border border-[var(--primary)]/15"
         >
           回到首页
-        </a>
-        <a
+        </Link>
+        <Link prefetch={false}
           href="/essays"
           className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full text-sm text-[var(--muted)] hover:text-[var(--foreground)] transition-all duration-300 ease-out border border-[var(--border)]/40 hover:border-[var(--primary)]/30"
         >
           去看看随笔
-        </a>
+        </Link>
       </div>
 
       <p className="mt-14 text-xs text-[var(--muted)]/60 tracking-wider font-serif italic animate-float-up" style={{ animationDelay: "320ms" }}>

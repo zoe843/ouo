@@ -13,18 +13,19 @@
 }
 
 :root {
-  --background: #0a1628;
-  --foreground: #e8edf3;
-  --primary: #4a9eff;
-  --accent: #5b8cbd;
-  --muted: #8899aa;
-  --card: #0f1f38;
-  --border: #1a3a5c;
+  --background: #0c1824;
+  --foreground: #e3e7e8;
+  --primary: #a9c5d3;
+  --accent: #a5b7c6;
+  --muted: #9baebc;
+  --card: #132230;
+  --border: #3a4d5d;
 }
 
 @layer base {
   html {
-    background-color: #0a1628;
+    background-color: var(--background);
+    color-scheme: dark;
   }
 
   /* 背景图直接放在 body 上 */
@@ -32,12 +33,12 @@
     min-height: 100vh;
     color: var(--foreground);
     font-family: var(--font-sans);
-    font-weight: 300;
+    font-weight: 400;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    background-color: #0a1628;
+    background-color: var(--background);
     background-image:
-      linear-gradient(180deg, rgba(10, 22, 40, 0.3) 0%, rgba(10, 22, 40, 0.45) 100%),
+      linear-gradient(180deg, rgba(12, 24, 36, 0.72) 0%, rgba(12, 24, 36, 0.87) 100%),
       url("/images/bg.webp");
     background-size: cover;
     background-position: center;
@@ -53,7 +54,7 @@
   }
 
   ::selection {
-    background: rgba(74, 158, 255, 0.3);
+    background: rgba(169, 197, 211, 0.25);
     color: #fff;
   }
 
@@ -64,7 +65,7 @@
     inset: 0;
     z-index: 9999;
     pointer-events: none;
-    opacity: 0.05;
+    opacity: 0.025;
     background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
   }
 
@@ -122,7 +123,7 @@
 
 /* 键盘导航时的可见焦点环（鼠标点击不触发） */
 :focus-visible {
-  outline: 2px solid rgba(74, 158, 255, 0.6);
+  outline: 2px solid #c8a7b7;
   outline-offset: 2px;
   border-radius: 4px;
 }
@@ -164,4 +165,48 @@
 @keyframes petal-sway {
   from { transform: translateX(-16px) rotate(-42deg); }
   to { transform: translateX(16px) rotate(38deg); }
+}
+
+/* Shared navigation and essay typography follow the quiet night palette. */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: #0c1824e8;
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid #a4bac514;
+}
+.site-header-inner {
+  width: min(100% - 64px, 1040px);
+  min-height: 76px;
+  margin-inline: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+.site-brand { display: flex; align-items: center; gap: 12px; flex-shrink: 0; color: #e3e5e1; font-family: var(--font-serif); font-size: 18px; letter-spacing: .14em; white-space: nowrap; }
+.site-brand svg { color: #b6a7b6; }
+.site-nav { display: flex; align-items: center; gap: 28px; }
+.site-nav a { position: relative; display: block; padding: 26px 2px; color: var(--muted); font-size: 13px; white-space: nowrap; transition: color .2s; }
+.site-nav a:hover, .site-nav a[aria-current="page"] { color: #f0e9e8; }
+.site-nav a[aria-current="page"]::after { content: ""; position: absolute; bottom: 15px; left: calc(50% - 2px); width: 4px; height: 4px; border-radius: 50%; background: #c8a7b7; }
+.essay-entry { display: block; padding: 25px 0; border-bottom: 1px solid #a4bac51c; }
+.essay-entry-heading { display: flex; justify-content: space-between; align-items: baseline; gap: 20px; }
+.essay-entry-heading h3 { font-family: var(--font-serif); font-size: 20px; font-weight: 400; line-height: 1.7; letter-spacing: .03em; color: #e0e5e4; transition: color .2s; }
+.essay-entry:hover h3 { color: #d9b8c4; }
+.essay-entry time { flex-shrink: 0; font-size: 11px; letter-spacing: .08em; color: var(--muted); }
+.essay-entry-description { margin-top: 9px; color: var(--muted); font-size: 14px; line-height: 1.9; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.essay-entry-tags { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 12px; color: #b5a6b4; font-size: 11px; }
+@media (max-width: 640px) {
+  .site-header-inner { width: calc(100% - 40px); min-height: 88px; gap: 4px; flex-direction: column; align-items: flex-start; padding-top: 14px; }
+  .site-brand { font-size: 16px; gap: 9px; }
+  .site-brand svg { width: 16px; height: 16px; }
+  .site-nav { width: 100%; justify-content: space-between; gap: 0; }
+  .site-nav a { padding: 12px 7px 16px; font-size: 12px; }
+  .site-nav a[aria-current="page"]::after { bottom: 7px; }
+  .essay-entry { padding: 22px 0; }
+  .essay-entry-heading { flex-direction: column; gap: 5px; }
+  .essay-entry-heading h3 { font-size: 18px; }
+  .essay-entry-description { font-size: 13px; }
 }
