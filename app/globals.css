@@ -185,8 +185,14 @@
   justify-content: space-between;
   gap: 24px;
 }
-.site-brand { display: flex; align-items: center; gap: 12px; flex-shrink: 0; color: #e3e5e1; font-family: var(--font-serif); font-size: 18px; letter-spacing: .14em; white-space: nowrap; }
-.site-brand svg { color: #b6a7b6; }
+.site-brand { display: inline-flex; align-items: center; gap: 11px; flex-shrink: 0; color: #eceae4; white-space: nowrap; }
+.site-brand-mark { width: 36px; height: 36px; flex-shrink: 0; overflow: visible; }
+.site-brand-moon { stroke: #c6d4db; fill: #c6d4db0a; }
+.site-brand-petal { fill: #c8a7b7; }
+.site-brand-petal-vein { stroke: #0c18246b; }
+.site-brand-rain { stroke: #a9c5d3; }
+.site-brand-name { font-family: var(--font-serif); font-size: 20px; font-weight: 400; line-height: 1.5; letter-spacing: .18em; margin-right: -.18em; }
+.site-brand:hover .site-brand-name { color: #fff9f0; }
 .site-nav { display: flex; align-items: center; gap: 28px; }
 .site-nav a { position: relative; display: block; padding: 26px 2px; color: var(--muted); font-size: 13px; white-space: nowrap; transition: color .2s; }
 .site-nav a:hover, .site-nav a[aria-current="page"] { color: #f0e9e8; }
@@ -200,8 +206,9 @@
 .essay-entry-tags { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 12px; color: #b5a6b4; font-size: 11px; }
 @media (max-width: 640px) {
   .site-header-inner { width: calc(100% - 40px); min-height: 88px; gap: 4px; flex-direction: column; align-items: flex-start; padding-top: 14px; }
-  .site-brand { font-size: 16px; gap: 9px; }
-  .site-brand svg { width: 16px; height: 16px; }
+  .site-brand { gap: 9px; }
+  .site-brand-mark { width: 30px; height: 30px; }
+  .site-brand-name { font-size: 18px; letter-spacing: .16em; margin-right: -.16em; }
   .site-nav { width: 100%; justify-content: space-between; gap: 0; }
   .site-nav a { padding: 12px 7px 16px; font-size: 12px; }
   .site-nav a[aria-current="page"]::after { bottom: 7px; }
