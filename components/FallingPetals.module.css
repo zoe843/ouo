@@ -1,0 +1,61 @@
+.field {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+  pointer-events: none;
+  user-select: none;
+}
+
+.fall {
+  position: absolute;
+  top: -24px;
+  width: var(--size);
+  height: var(--size);
+  opacity: 0;
+  animation: descend var(--fall) var(--delay) linear infinite;
+}
+
+.sway {
+  display: block;
+  animation: breeze var(--sway) var(--phase) ease-in-out infinite alternate;
+}
+
+.petal {
+  display: block;
+  width: var(--size);
+  height: calc(var(--size) * .72);
+  border-radius: 78% 12% 72% 42%;
+  background: linear-gradient(135deg, #e2bdcc 8%, #c69aad 56%, #99788e);
+  box-shadow: inset 1px 1px 2px #f3d9e533;
+  animation: tumble var(--turn) var(--phase) ease-in-out infinite alternate;
+}
+
+@keyframes descend {
+  0% { opacity: 0; transform: translate3d(0, 0, 0); }
+  8%, 88% { opacity: var(--opacity); }
+  100% { opacity: 0; transform: translate3d(var(--drift), calc(100svh + 48px), 0); }
+}
+
+@keyframes breeze {
+  from { transform: translateX(-18px); }
+  to { transform: translateX(18px); }
+}
+
+@keyframes tumble {
+  0% { transform: rotate(-32deg) scaleX(.85); }
+  35% { transform: rotate(38deg) scaleX(.45); }
+  70% { transform: rotate(112deg) scaleX(1); }
+  100% { transform: rotate(148deg) scaleX(.85); }
+}
+
+@media (max-width: 640px) {
+  .fall:nth-child(even) { display: none; }
+  .fall { width: calc(var(--size) * .8); }
+  .petal { width: calc(var(--size) * .8); height: calc(var(--size) * .58); }
+}
+
+@media (prefers-reduced-motion: reduce), print {
+  .field { display: none; }
+  .fall, .sway, .petal { animation: none; }
+}

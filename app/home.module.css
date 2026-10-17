@@ -13,19 +13,6 @@
   isolation: isolate;
 }
 
-.petals {
-  position: absolute;
-  inset: 0;
-  overflow: hidden;
-  pointer-events: none;
-  z-index: -1;
-}
-
-.petals span span {
-  background: linear-gradient(135deg, #dab3c0, #99798b);
-  border-radius: 80% 0 80% 80%;
-}
-
 .greeting {
   padding-block: 20px;
 }

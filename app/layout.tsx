@@ -3,6 +3,7 @@ import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import MusicPlayer from "@/components/MusicPlayer";
+import FallingPetals from "@/components/FallingPetals";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.rainbloom.xin"),
@@ -52,6 +53,7 @@ export default function RootLayout({
         />
       </head>
       <body className="min-h-full flex flex-col text-[var(--foreground)]">
+        <FallingPetals />
         <Header />
         <main className="flex-1">{children}</main>
         <Footer />

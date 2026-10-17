@@ -9,13 +9,6 @@ import styles from "./home.module.css";
 
 export const metadata: Metadata = { alternates: { canonical: "/" } };
 
-const PETALS = [
-  { left: "8%", size: 10, fall: 18, sway: 4, delay: -3, opacity: 0.4 },
-  { left: "36%", size: 7, fall: 23, sway: 5, delay: -12, opacity: 0.3 },
-  { left: "69%", size: 12, fall: 21, sway: 4, delay: -7, opacity: 0.4 },
-  { left: "92%", size: 8, fall: 26, sway: 6, delay: -19, opacity: 0.3 },
-];
-
 function displayDate(date: string) {
   return date.slice(0, 10).replaceAll("-", ".");
 }
@@ -29,19 +22,6 @@ export default function HomePage() {
   return (
     <div className={styles.home}>
       <section className={styles.hero} aria-labelledby="home-title">
-        <div className={styles.petals} aria-hidden="true">
-          {PETALS.map((petal, i) => (
-            <span key={i} className="petal" style={{
-              left: petal.left,
-              opacity: petal.opacity,
-              animationDuration: `${petal.fall}s`,
-              animationDelay: `${petal.delay}s`,
-            }}>
-              <span style={{ width: petal.size, height: petal.size, animationDuration: `${petal.sway}s` }} />
-            </span>
-          ))}
-        </div>
-
         <div className={styles.greeting}>
           <p className={styles.verse}>相寻梦里路，飞雨落花中</p>
           <h1 id="home-title" className={styles.title}>雨落花庭</h1>
