@@ -46,6 +46,7 @@ export default function RootLayout({
     <html lang="zh-CN" className="h-full antialiased">
       <head>
         <link rel="preload" as="image" href="/images/bg.webp" fetchPriority="high" />
+        <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
         <link rel="alternate" type="application/rss+xml" title="雨落花庭" href="/rss.xml" />
         <script
           type="application/ld+json"
