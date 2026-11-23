@@ -9,17 +9,18 @@ export const metadata: Metadata = {
 
 export default function PostPage() {
   return (
-    <div className="max-w-2xl mx-auto px-6 pt-20 pb-10">
-      <div className="mb-10 animate-float-up">
-        <h1 className="font-serif text-3xl font-light tracking-wider text-[var(--foreground)]">
-          悄悄说
-        </h1>
-        <p className="mt-2 text-sm text-[var(--muted)] tracking-wide">
-          写一句，一两分钟后出现在碎碎念页 🫧
+    <div className="max-w-2xl mx-auto px-5 sm:px-6 pt-14 sm:pt-20 pb-10">
+      <header className="page-header animate-float-up">
+        <div className="page-title-row">
+          <span className="page-title-dot" aria-hidden="true" />
+          <h1 className="page-title">悄悄说</h1>
+        </div>
+        <p className="page-subtitle">
+          写一句，一两分钟后出现在碎碎念页
         </p>
-      </div>
+      </header>
 
-      <div className="animate-float-up" style={{ animationDelay: "80ms" }}>
+      <div className="night-panel p-5 sm:p-6 animate-float-up" style={{ animationDelay: "60ms" }}>
         <MurmurComposer />
       </div>
     </div>

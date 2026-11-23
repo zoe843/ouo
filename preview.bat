@@ -1,14 +1,13 @@
 @echo off
-cd /d "C:\Users\31170\feiyuluohua"
+cd /d "%~dp0"
 
 echo.
 echo  ====================================
-echo   飞雨落花的驿栈 — 本地预览
+echo   Rainbloom Local Preview (port 3000)
 echo  ====================================
 echo.
 
-:: 启动本地服务器
 start "" "http://localhost:3000"
-npx next dev -p 3000
+npx next dev -H 0.0.0.0 -p 3000
 
 pause

@@ -429,8 +429,8 @@
   .windowLink {
     width: 84%;
     max-width: 360px;
-    justify-self: end;
-    margin-right: 5px;
+    justify-self: center;
+    margin-right: 0;
   }
 
   .window {

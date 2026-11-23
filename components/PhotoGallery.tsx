@@ -128,46 +128,46 @@ export default function PhotoGallery({ series }: { series: PhotoSeries[] }) {
         <span className="text-xs text-[var(--muted)] tracking-wide">排序</span>
         <button
           onClick={() => { setSort("desc"); setPage(0); }}
-          className={`px-3 py-1 rounded-full text-xs tracking-wide transition-all duration-300 ${
+          className={`px-3 py-1 rounded-full text-xs tracking-wide border transition-all duration-300 ${
             sort === "desc"
-              ? "bg-[var(--primary)]/20 text-[var(--primary)]"
-              : "text-[var(--muted)] hover:text-[var(--foreground)]"
+              ? "bg-[#c8a7b7]/18 border-[#c8a7b7]/40 text-[#f0e6ea]"
+              : "border-transparent text-[var(--muted)] hover:text-[var(--foreground)]"
           }`}
         >
           最新在前
         </button>
         <button
           onClick={() => { setSort("asc"); setPage(0); }}
-          className={`px-3 py-1 rounded-full text-xs tracking-wide transition-all duration-300 ${
+          className={`px-3 py-1 rounded-full text-xs tracking-wide border transition-all duration-300 ${
             sort === "asc"
-              ? "bg-[var(--primary)]/20 text-[var(--primary)]"
-              : "text-[var(--muted)] hover:text-[var(--foreground)]"
+              ? "bg-[#c8a7b7]/18 border-[#c8a7b7]/40 text-[#f0e6ea]"
+              : "border-transparent text-[var(--muted)] hover:text-[var(--foreground)]"
           }`}
         >
           最早在前
         </button>
-        <span className="text-xs text-[var(--muted)]/60 ml-auto">
+        <span className="text-xs text-[var(--muted)]/70 ml-auto tabular-nums">
           {sorted.length} 组 · {totalPhotos} 张
         </span>
       </div>
 
       {/* ——— 系列列表 ——— */}
       <div className="space-y-16">
-        {pageSeries.map((s, si) => (
+        {pageSeries.map((s) => (
           <section key={s.key} className="animate-float-up">
             {/* 标题 — 居左 */}
             <h2 className="font-serif text-xl font-light tracking-wider text-[var(--foreground)] mb-1">
               {s.title}
             </h2>
             {/* 日期 */}
-            <time className="text-xs text-[var(--muted)]/70 tracking-wide">
-              {s.date}
+            <time className="text-xs text-[var(--muted)]/75 tracking-wide tabular-nums">
+              {s.date.replaceAll("-", ".")}
               {s.tags.length > 0 && (
                 <span className="ml-3 inline-flex gap-1.5">
                   {s.tags.map((t) => (
                     <span
                       key={t}
-                      className="px-2 py-0.5 rounded-full bg-[var(--primary)]/8 text-[var(--accent)] text-[11px]"
+                      className="px-2 py-0.5 rounded-full bg-[#c8a7b7]/10 border border-[#c8a7b7]/20 text-[#d4c0c9] text-[11px]"
                     >
                       {t}
                     </span>
@@ -177,14 +177,20 @@ export default function PhotoGallery({ series }: { series: PhotoSeries[] }) {
             </time>
 
             {/* 照片网格 */}
-            <div className="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-4 mt-4">
+            <div
+              className={
+                s.photos.length === 1
+                  ? "grid grid-cols-1 max-w-md mt-4"
+                  : "grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-4 mt-4"
+              }
+            >
               {s.photos.map((photo, pi) => {
                 const realSi = sorted.indexOf(s);
                 return (
                   <button
                     key={pi}
                     onClick={() => open(realSi, pi)}
-                    className="group relative aspect-[4/3] rounded-lg overflow-hidden bg-[var(--card)] border border-[var(--border)]/30 card-glow transition-all duration-500 ease-out hover:-translate-y-1"
+                    className="group relative aspect-[4/3] rounded-lg overflow-hidden bg-[var(--card)] border border-[#bdc7d0]/15 card-glow transition-all duration-500 ease-out hover:-translate-y-1"
                   >
                     <img
                       src={photo.thumb ?? photo.url}
@@ -211,7 +217,7 @@ export default function PhotoGallery({ series }: { series: PhotoSeries[] }) {
           <button
             onClick={() => setPage(Math.max(0, safePage - 1))}
             disabled={safePage === 0}
-            className="px-3 py-1.5 text-xs rounded-full border border-[var(--border)]/30 text-[var(--muted)] hover:text-[var(--foreground)] hover:border-[var(--primary)]/30 disabled:opacity-30 disabled:cursor-not-allowed transition-all duration-300"
+            className="px-3 py-1.5 text-xs rounded-full border border-[var(--border)]/30 text-[var(--muted)] hover:text-[var(--foreground)] hover:border-[#c8a7b7]/35 disabled:opacity-30 disabled:cursor-not-allowed transition-all duration-300"
           >
             ← 上一页
           </button>
@@ -221,7 +227,7 @@ export default function PhotoGallery({ series }: { series: PhotoSeries[] }) {
               onClick={() => setPage(i)}
               className={`w-8 h-8 text-xs rounded-full transition-all duration-300 ${
                 i === safePage
-                  ? "bg-[var(--primary)]/20 text-[var(--primary)]"
+                  ? "bg-[#c8a7b7]/20 text-[#f0e6ea]"
                   : "text-[var(--muted)] hover:text-[var(--foreground)] hover:bg-[var(--foreground)]/5"
               }`}
             >
@@ -231,7 +237,7 @@ export default function PhotoGallery({ series }: { series: PhotoSeries[] }) {
           <button
             onClick={() => setPage(Math.min(totalPages - 1, safePage + 1))}
             disabled={safePage === totalPages - 1}
-            className="px-3 py-1.5 text-xs rounded-full border border-[var(--border)]/30 text-[var(--muted)] hover:text-[var(--foreground)] hover:border-[var(--primary)]/30 disabled:opacity-30 disabled:cursor-not-allowed transition-all duration-300"
+            className="px-3 py-1.5 text-xs rounded-full border border-[var(--border)]/30 text-[var(--muted)] hover:text-[var(--foreground)] hover:border-[#c8a7b7]/35 disabled:opacity-30 disabled:cursor-not-allowed transition-all duration-300"
           >
             下一页 →
           </button>
@@ -239,83 +245,77 @@ export default function PhotoGallery({ series }: { series: PhotoSeries[] }) {
       )}
 
       {/* ——— Lightbox ——— */}
-      {selected !== null && (
-        <div
-          className="fixed inset-0 z-[100] bg-black/90 backdrop-blur-sm flex items-center justify-center"
-          onClick={close}
-          onTouchStart={onTouchStart}
-          onTouchEnd={onTouchEnd}
-        >
-          <button
-            onClick={close}
-            aria-label="关闭大图"
-            className="absolute top-6 right-6 text-white/60 hover:text-white text-2xl font-light transition-colors z-10"
-          >
-            ✕
-          </button>
-          <button
-            onClick={(e) => { e.stopPropagation(); goPrev(); }}
-            aria-label="上一张"
-            className="absolute left-4 text-white/60 hover:text-white text-3xl font-light transition-colors"
-          >
-            ‹
-          </button>
-          <button
-            onClick={(e) => { e.stopPropagation(); goNext(); }}
-            aria-label="下一张"
-            className="absolute right-4 text-white/60 hover:text-white text-3xl font-light transition-colors"
-          >
-            ›
-          </button>
-
+      {selected !== null && (() => {
+        const cur = flatPhotos.find(
+          (f) =>
+            f.seriesIdx === selected.seriesIdx &&
+            f.photoIdx === selected.photoIdx
+        );
+        const curIdx = cur ? flatPhotos.indexOf(cur) : 0;
+        return (
           <div
-            className="max-w-[90vw] max-h-[85vh] flex flex-col items-center gap-3"
-            onClick={(e) => e.stopPropagation()}
+            role="dialog"
+            aria-modal="true"
+            aria-label={cur?.photo.title ?? "照片大图"}
+            className="fixed inset-0 z-[100] bg-black/90 backdrop-blur-sm flex items-center justify-center"
+            onClick={close}
+            onTouchStart={onTouchStart}
+            onTouchEnd={onTouchEnd}
           >
-            <img
-              src={flatPhotos.find(
-                (f) =>
-                  f.seriesIdx === selected.seriesIdx &&
-                  f.photoIdx === selected.photoIdx
-              )?.photo.url ?? ""}
-              alt={(() => {
-                const cur = flatPhotos.find(
-                  (f) =>
-                    f.seriesIdx === selected.seriesIdx &&
-                    f.photoIdx === selected.photoIdx
-                );
-                return cur?.photo.title ?? "";
-              })()}
-              decoding="async"
-              className="max-w-full max-h-[80vh] rounded-xl object-contain shadow-2xl"
-            />
-            {(() => {
-              const cur = flatPhotos.find(
-                (f) =>
-                  f.seriesIdx === selected.seriesIdx &&
-                  f.photoIdx === selected.photoIdx
-              );
-              const curIdx = flatPhotos.indexOf(cur!);
-              return (
-                <div className="flex flex-col items-center gap-1">
-                  <p className="text-white/80 text-sm font-light tracking-wide">
-                    {cur?.photo.title}
-                    <span className="text-white/40 ml-2">{cur?.photo.date}</span>
-                    <span className="text-white/40 ml-2">
-                      {curIdx + 1} / {flatPhotos.length}
+            <button
+              onClick={close}
+              aria-label="关闭大图"
+              className="absolute top-4 right-4 sm:top-6 sm:right-6 w-10 h-10 rounded-full bg-[#0c1824]/75 border border-white/15 backdrop-blur-sm flex items-center justify-center text-white/85 hover:text-white hover:bg-[#0c1824]/95 text-lg font-light transition-colors z-10"
+            >
+              ✕
+            </button>
+            <button
+              onClick={(e) => { e.stopPropagation(); goPrev(); }}
+              aria-label="上一张"
+              className="absolute left-3 sm:left-5 w-10 h-10 rounded-full bg-[#0c1824]/75 border border-white/15 backdrop-blur-sm flex items-center justify-center text-white/85 hover:text-white hover:bg-[#0c1824]/95 text-2xl leading-none font-light transition-colors z-10"
+            >
+              ‹
+            </button>
+            <button
+              onClick={(e) => { e.stopPropagation(); goNext(); }}
+              aria-label="下一张"
+              className="absolute right-3 sm:right-5 w-10 h-10 rounded-full bg-[#0c1824]/75 border border-white/15 backdrop-blur-sm flex items-center justify-center text-white/85 hover:text-white hover:bg-[#0c1824]/95 text-2xl leading-none font-light transition-colors z-10"
+            >
+              ›
+            </button>
+
+            <div
+              className="max-w-[90vw] max-h-[85vh] flex flex-col items-center gap-3"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <img
+                src={cur?.photo.url ?? ""}
+                alt={cur?.photo.title ?? ""}
+                decoding="async"
+                className="max-w-full max-h-[80vh] rounded-xl object-contain shadow-2xl"
+              />
+              <div className="flex flex-col items-center gap-1">
+                <p className="text-white/85 text-sm font-light tracking-wide text-center px-4">
+                  {cur?.photo.title}
+                  {cur?.photo.date && (
+                    <span className="text-white/50 ml-2 tabular-nums">
+                      {cur.photo.date.replaceAll("-", ".")}
                     </span>
-                  </p>
-                  {cur?.photo.exif && (
-                    <p className="text-white/40 text-xs tracking-wider tabular-nums">
-                      {cur.photo.exif}
-                    </p>
                   )}
-                </div>
-              );
-            })()}
+                  <span className="text-white/50 ml-2 tabular-nums">
+                    {curIdx + 1} / {flatPhotos.length}
+                  </span>
+                </p>
+                {cur?.photo.exif && (
+                  <p className="text-white/45 text-xs tracking-wider tabular-nums">
+                    {cur.photo.exif}
+                  </p>
+                )}
+              </div>
+            </div>
           </div>
-        </div>
-      )}
+        );
+      })()}
     </>
   );
 }

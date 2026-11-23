@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { getEssayBySlug, getAllEssays } from "@/lib/essays";
 import { notFound } from "next/navigation";
 import MDXContent from "@/components/MDXContent";
@@ -54,56 +55,64 @@ export default async function EssayPage({ params }: Props) {
   });
 
   return (
-    <div className="max-w-2xl mx-auto px-6 pt-20 pb-10">
+    <div className="max-w-2xl mx-auto px-5 sm:px-6 pt-14 sm:pt-20 pb-10">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: articleJsonLd }}
       />
-      <article className="animate-float-up">
-        <header className="mb-12 text-center">
-          <h1 className="font-serif text-3xl font-light tracking-wider text-[var(--foreground)]">
-            {essay.title}
-          </h1>
-          <div className="flex items-center justify-center gap-3 mt-4 text-sm text-[var(--muted)] font-light">
-            {essay.date && <time>{essay.date}</time>}
-            {essay.tags.length > 0 && (
-              <>
-                <span className="text-[var(--border)]">·</span>
-                <div className="flex gap-2">
+      <div className="night-panel px-6 py-8 sm:px-10 sm:py-10 animate-float-up">
+        <article>
+          <header className="mb-10 text-center">
+            <h1 className="font-serif text-2xl sm:text-3xl font-light tracking-wider text-[#eceae4]">
+              {essay.title}
+            </h1>
+            <div className="flex flex-wrap items-center justify-center gap-x-3 gap-y-1.5 mt-4 text-xs sm:text-sm text-[var(--muted)] font-light">
+              {essay.date && (
+                <time dateTime={essay.date} className="tabular-nums">
+                  {essay.date.replaceAll("-", ".")}
+                </time>
+              )}
+              {essay.date && essay.tags.length > 0 && (
+                <span className="text-[var(--border)]" aria-hidden="true">·</span>
+              )}
+              {essay.tags.length > 0 && (
+                <div className="flex flex-wrap justify-center gap-2.5">
                   {essay.tags.map((tag) => (
-                    <span key={tag} className="text-[var(--accent)]">
-                      #{tag}
+                    <span key={tag} className="text-[#b5a6b4]">
+                      {tag}
                     </span>
                   ))}
                 </div>
-              </>
-            )}
+              )}
+            </div>
+          </header>
+
+          <div className="leading-relaxed">
+            <MDXContent source={essay.content} />
           </div>
-        </header>
+        </article>
+      </div>
 
-        <div className="leading-relaxed">
-          <MDXContent source={essay.content} />
-        </div>
-      </article>
-
-      <nav className="mt-16 pt-8 border-t border-[var(--border)]/30 flex justify-between text-sm">
+      <nav className="mt-12 pt-8 border-t border-[var(--border)]/30 flex justify-between gap-6 text-sm">
         {prev ? (
-          <a
+          <Link
+            prefetch={false}
             href={`/essays/${prev.slug}`}
-            className="text-[var(--muted)] hover:text-[var(--primary)] transition-colors"
+            className="text-[var(--muted)] hover:text-[#d9b8c4] transition-colors"
           >
             ← {prev.title}
-          </a>
+          </Link>
         ) : (
           <span />
         )}
         {next ? (
-          <a
+          <Link
+            prefetch={false}
             href={`/essays/${next.slug}`}
-            className="text-[var(--muted)] hover:text-[var(--primary)] transition-colors text-right"
+            className="text-[var(--muted)] hover:text-[#d9b8c4] transition-colors text-right"
           >
             {next.title} →
-          </a>
+          </Link>
         ) : (
           <span />
         )}

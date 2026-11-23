@@ -184,10 +184,10 @@ export default function MusicPlayer() {
       title={playing ? "暂停音乐" : nudge ? "上次播放被浏览器暂停，点这里继续" : "播放音乐"}
       aria-label={playing ? "暂停音乐" : "播放音乐"}
       className={
-        "fixed bottom-6 right-6 z-[200] w-10 h-10 rounded-full flex items-center justify-center border shadow-lg backdrop-blur-md transition-all duration-500 hover:scale-110 "
+        "fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-[60] w-10 h-10 rounded-full flex items-center justify-center border shadow-lg backdrop-blur-md transition-all duration-500 hover:scale-110 "
         + (playing
-          ? "bg-[var(--primary)]/20 border-[var(--primary)]/40 text-[var(--primary)] shadow-[var(--primary)]/20"
-          : "bg-[var(--card)]/80 border-[var(--border)]/40 text-[var(--muted)]")
+          ? "bg-[var(--primary)]/20 border-[var(--primary)]/40 text-[var(--primary)] shadow-[var(--primary)]/20 opacity-100"
+          : "bg-[var(--card)]/75 border-[var(--border)]/40 text-[var(--muted)] opacity-80 hover:opacity-100")
       }
     >
       {nudge && !playing && (

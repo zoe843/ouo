@@ -12,18 +12,16 @@ export default function PhotosPage() {
   const series = getAllSeries();
 
   return (
-    <div className="max-w-4xl mx-auto px-6 pt-20 pb-10">
-      <div className="mb-12 animate-float-up">
-        <div className="flex items-center gap-3">
-          <span className="w-1 h-6 rounded-full bg-[var(--primary)]/60 inline-block" />
-          <h1 className="font-serif text-3xl font-light tracking-wider text-[var(--foreground)]">
-            照片
-          </h1>
+    <div className="max-w-4xl mx-auto px-5 sm:px-6 pt-14 sm:pt-20 pb-10">
+      <header className="page-header animate-float-up">
+        <div className="page-title-row">
+          <span className="page-title-dot" aria-hidden="true" />
+          <h1 className="page-title">照片</h1>
         </div>
-        <p className="mt-3 pl-5 text-sm text-[var(--muted)] tracking-wide">
+        <p className="page-subtitle">
           用镜头记录下一些瞬间
         </p>
-      </div>
+      </header>
 
       <PhotoGallery series={series} />
     </div>

@@ -12,33 +12,28 @@ export default function EssaysPage() {
   const essays = getAllEssays();
 
   return (
-    <div className="max-w-3xl mx-auto px-6 pt-20 pb-10">
-      <div className="mb-12 animate-float-up">
-        <div className="flex items-center gap-3">
-          <span className="w-1 h-6 rounded-full bg-[var(--primary)]/60 inline-block" />
-          <h1 className="font-serif text-3xl font-light tracking-wider text-[var(--foreground)]">
-            随笔
-          </h1>
+    <div className="max-w-3xl mx-auto px-5 sm:px-6 pt-14 sm:pt-20 pb-10">
+      <header className="page-header animate-float-up">
+        <div className="page-title-row">
+          <span className="page-title-dot" aria-hidden="true" />
+          <h1 className="page-title">随笔</h1>
         </div>
-        <p className="mt-3 pl-5 text-sm text-[var(--muted)] tracking-wide">
+        <p className="page-subtitle">
           一些随手写下的文字
         </p>
-      </div>
+      </header>
 
       {essays.length === 0 ? (
         <p className="text-center text-[var(--muted)] py-20 text-sm tracking-wide">
           还没有文章，过些日子再来吧。
         </p>
       ) : (
-        <div className="space-y-6">
-          {essays.map((essay, i) => (
-            <div
-              key={essay.slug}
-              className="animate-float-up"
-              style={{ animationDelay: `${i * 100}ms` }}
-            >
-              <EssayCard essay={essay} />
-            </div>
+        <div
+          className="night-panel px-6 sm:px-8 py-2 [&>a:last-child]:border-b-0 animate-float-up"
+          style={{ animationDelay: "60ms" }}
+        >
+          {essays.map((essay) => (
+            <EssayCard key={essay.slug} essay={essay} />
           ))}
         </div>
       )}

@@ -7,12 +7,12 @@ export const metadata: Metadata = {
 
 export default function NotFound() {
   return (
-    <div className="max-w-3xl mx-auto px-6 py-28 text-center">
+    <div className="max-w-3xl mx-auto px-6 py-14 sm:py-20 text-center">
       {/* 大水滴 404 */}
-      <div className="relative inline-block mb-8 animate-float-up">
+      <div className="relative inline-block mb-6 animate-float-up">
         <svg
-          width="120"
-          height="140"
+          width="112"
+          height="130"
           viewBox="0 0 120 140"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
@@ -32,36 +32,32 @@ export default function NotFound() {
             </linearGradient>
           </defs>
         </svg>
-        <span className="absolute inset-0 flex items-center justify-center text-2xl font-light tracking-widest text-[var(--foreground)]">
+        <span className="absolute inset-0 flex items-center justify-center font-serif text-2xl font-light tracking-widest text-[var(--foreground)]">
           404
         </span>
       </div>
 
-      <h1 className="text-2xl font-light tracking-wider text-[var(--foreground)] mb-3 animate-float-up" style={{ animationDelay: "80ms" }}>
+      <h1 className="font-serif text-2xl font-light tracking-wider text-[var(--foreground)] mb-3 animate-float-up" style={{ animationDelay: "60ms" }}>
         这滴雨落到了没有路的地方
       </h1>
-      <p className="text-sm text-[var(--muted)] tracking-wide mb-10 animate-float-up" style={{ animationDelay: "160ms" }}>
+      <p className="text-sm text-[var(--muted)] tracking-wide mb-9 animate-float-up" style={{ animationDelay: "120ms" }}>
         你要找的页面不存在，或者已经被风吹走了。
       </p>
 
-      <div className="flex justify-center gap-4 animate-float-up" style={{ animationDelay: "240ms" }}>
+      <div className="flex justify-center gap-4 animate-float-up" style={{ animationDelay: "160ms" }}>
         <Link prefetch={false}
           href="/"
-          className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full bg-[var(--primary)]/12 text-sm text-[var(--foreground)]/85 hover:text-[var(--foreground)] hover:bg-[var(--primary)]/22 hover:-translate-y-0.5 hover:shadow-[0_0_24px_rgba(74,158,255,0.2)] transition-all duration-300 ease-out border border-[var(--primary)]/15"
+          className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full bg-[#a5bec9]/12 text-sm text-[#e2e7e7] hover:text-white hover:bg-[#a5bec9]/20 hover:border-[#b9cbd1]/45 hover:-translate-y-0.5 transition-all duration-300 ease-out border border-[#b9cbd1]/24"
         >
           回到首页
         </Link>
         <Link prefetch={false}
           href="/essays"
-          className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full text-sm text-[var(--muted)] hover:text-[var(--foreground)] transition-all duration-300 ease-out border border-[var(--border)]/40 hover:border-[var(--primary)]/30"
+          className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full text-sm text-[var(--muted)] hover:text-[var(--foreground)] transition-all duration-300 ease-out border border-[var(--border)]/40 hover:border-[#c8a7b7]/35"
         >
           去看看随笔
         </Link>
       </div>
-
-      <p className="mt-14 text-xs text-[var(--muted)]/60 tracking-wider font-serif italic animate-float-up" style={{ animationDelay: "320ms" }}>
-        相寻梦里路，飞雨落花中
-      </p>
     </div>
   );
 }

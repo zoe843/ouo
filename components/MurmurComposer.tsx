@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useMemo, useRef, useState } from "react";
 import { autoEmoji, COMMON_EMOJI, FALLBACK_EMOJI } from "@/lib/emoji";
 
 const PASS_KEY = "murmur-pass";
@@ -15,8 +15,10 @@ type Status = "idle" | "sending" | "ok" | "error";
 
 export default function MurmurComposer() {
   const [body, setBody] = useState("");
-  const [emoji, setEmoji] = useState(FALLBACK_EMOJI);
-  const [pass, setPass] = useState("");
+  const [customEmoji, setCustomEmoji] = useState<string | null>(null);
+  const [pass, setPass] = useState(() =>
+    typeof window !== "undefined" ? (localStorage.getItem(PASS_KEY) ?? "") : "",
+  );
   const [needPass, setNeedPass] = useState(false);
   const [status, setStatus] = useState<Status>("idle");
   const [msg, setMsg] = useState("");
@@ -27,20 +29,11 @@ export default function MurmurComposer() {
     () => (body.trim() ? autoEmoji(undefined, body) : FALLBACK_EMOJI),
     [body],
   );
+  const emoji = customEmoji ?? guessed;
   const candidates = useMemo(
     () => [guessed, ...COMMON_EMOJI.filter((e) => e !== guessed)].slice(0, 14),
     [guessed],
   );
-
-  useEffect(() => {
-    setEmoji(guessed);
-  }, [guessed]);
-
-  useEffect(() => {
-    const saved = localStorage.getItem(PASS_KEY);
-    if (saved) setPass(saved);
-    taRef.current?.focus();
-  }, []);
 
   async function send() {
     const text = body.trim();
@@ -69,6 +62,7 @@ export default function MurmurComposer() {
         setStatus("ok");
         setMsg("已送达 🫧 一两分钟后就会出现在碎碎念页");
         setBody("");
+        setCustomEmoji(null);
         setNeedPass(false);
       } else if (res.status === 401) {
         localStorage.removeItem(PASS_KEY);
@@ -110,7 +104,10 @@ export default function MurmurComposer() {
         rows={4}
         maxLength={MAX_LEN}
         onChange={(e) => {
-          setBody(e.target.value);
+          const next = e.target.value;
+          const nextGuessed = next.trim() ? autoEmoji(undefined, next) : FALLBACK_EMOJI;
+          if (nextGuessed !== guessed) setCustomEmoji(null);
+          setBody(next);
           if (status !== "sending") setStatus("idle");
         }}
         placeholder="随便说点什么…"
@@ -123,7 +120,7 @@ export default function MurmurComposer() {
             <button
               key={e}
               type="button"
-              onClick={() => setEmoji(e)}
+              onClick={() => setCustomEmoji(e)}
               className={
                 "text-lg rounded-full px-1.5 py-0.5 transition-all select-none " +
                 (emoji === e
@@ -136,7 +133,7 @@ export default function MurmurComposer() {
             </button>
           ))}
         </div>
-        <span className="text-[11px] text-[var(--muted)]/50 flex-shrink-0 pb-1">
+        <span className="text-[11px] text-[var(--muted)]/70 tabular-nums flex-shrink-0 pb-1">
           {body.length}/{MAX_LEN}
         </span>
       </div>
@@ -145,7 +142,7 @@ export default function MurmurComposer() {
         type="button"
         onClick={send}
         disabled={status === "sending" || !body.trim()}
-        className="w-full rounded-full bg-[var(--primary)]/90 py-3 text-sm font-light tracking-[0.3em] text-[#0c1824] transition-all hover:bg-[var(--primary)] disabled:opacity-40"
+        className="w-full rounded-full bg-[#c8a7b7]/85 py-3 text-sm font-light tracking-[0.3em] text-[#0c1824] transition-all hover:bg-[#d9b8c4] disabled:bg-[#192b3b] disabled:text-[var(--muted)]/70 disabled:border disabled:border-[var(--border)]/35 disabled:cursor-not-allowed"
       >
         {status === "sending" ? "送达中…" : "说出去"}
       </button>
