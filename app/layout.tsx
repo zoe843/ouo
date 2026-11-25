@@ -46,6 +46,9 @@ export default function RootLayout({
     <html lang="zh-CN" className="h-full antialiased">
       <head>
         <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+        <link rel="preload" href="/fonts/zhimangxing-title.woff" as="font" type="font/woff" crossOrigin="anonymous" />
+        {/* eslint-disable-next-line @next/next/no-css-tags */}
+        <link rel="stylesheet" href="/fonts/huiwen/result.css" />
         <link rel="alternate" type="application/rss+xml" title="雨落花庭" href="/rss.xml" />
         <script
           type="application/ld+json"

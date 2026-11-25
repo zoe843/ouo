@@ -23,7 +23,7 @@ export const components: MDXComponents = {
   ),
   blockquote: (props) => (
     <blockquote
-      className="font-serif border-l-2 border-[#9c4e46]/45 pl-4 my-6 italic text-[#665d52]"
+      className="font-serif border-l-2 border-[#9c4e46]/45 pl-4 my-6 text-[#665d52]"
       {...props}
     />
   ),

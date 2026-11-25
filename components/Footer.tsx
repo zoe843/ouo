@@ -29,7 +29,7 @@ export default function Footer() {
         </nav>
 
         {/* 引用 */}
-        <p className="text-xs text-[var(--muted)]/70 tracking-wider font-serif italic">
+        <p className="text-xs text-[var(--muted)]/70 tracking-wider font-serif">
           相寻梦里路，飞雨落花中
         </p>
 
