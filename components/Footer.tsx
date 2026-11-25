@@ -17,6 +17,9 @@ export default function Footer() {
           <Link prefetch={false} href="/photos" className="text-xs text-[var(--muted)] hover:text-[var(--foreground)] transition-colors">
             照片
           </Link>
+          <a href="/books/" className="text-xs text-[var(--muted)] hover:text-[var(--foreground)] transition-colors">
+            书阁
+          </a>
           <Link prefetch={false} href="/about" className="text-xs text-[var(--muted)] hover:text-[var(--foreground)] transition-colors">
             关于
           </Link>

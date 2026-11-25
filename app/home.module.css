@@ -335,6 +335,73 @@
   color: #fff1f0;
 }
 
+.books {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.bookCard {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  padding: 22px 24px;
+  border: 1px solid #bdc7d019;
+  border-radius: 8px;
+  background: #0e1b28e8;
+  transition: border-color .22s, background-color .22s;
+}
+
+.bookCard:hover {
+  border-color: #b9cbd145;
+  background: #122131ee;
+}
+
+.bookMeta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  color: var(--muted);
+  font-size: 11px;
+  letter-spacing: .06em;
+}
+
+.bookCard h3 {
+  margin-top: 13px;
+  font-family: var(--font-serif);
+  font-size: 19px;
+  font-weight: 400;
+  letter-spacing: .06em;
+  color: #e3e5e1;
+  transition: color .2s;
+}
+
+.bookCard:hover h3 {
+  color: #d9b8c4;
+}
+
+.bookCard p {
+  margin-top: 10px;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.85;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.bookTags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: auto;
+  padding-top: 16px;
+  color: #b5a6b4;
+  font-size: 11px;
+}
+
 .farewell {
   padding: 76px 0 8px;
   text-align: center;
@@ -385,6 +452,10 @@
 
   .photos {
     gap: 20px;
+  }
+
+  .books {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
 }
@@ -538,6 +609,15 @@
 
   .photoLink h3 {
     font-size: 13px;
+  }
+
+  .books {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .bookCard {
+    padding: 18px 20px;
   }
 
   .farewell {

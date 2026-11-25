@@ -4,8 +4,11 @@ import type { Metadata } from "next";
 import { getRecentEssays } from "@/lib/essays";
 import { getAllPhotos, getRecentPhotos } from "@/lib/photos";
 import { getRecentMurmurs } from "@/lib/murmurs";
+import { formatWordCount, getFeaturedBooks } from "@/lib/books";
 import EssayCard from "@/components/EssayCard";
 import styles from "./home.module.css";
+
+export const dynamic = "force-static";
 
 export const metadata: Metadata = { alternates: { canonical: "/" } };
 
@@ -13,10 +16,11 @@ function displayDate(date: string) {
   return date.slice(0, 10).replaceAll("-", ".");
 }
 
-export default function HomePage() {
+export default async function HomePage() {
   const recentEssays = getRecentEssays(3);
   const recentPhotos = getRecentPhotos(3);
   const latestMurmur = getRecentMurmurs(1)[0];
+  const featuredBooks = await getFeaturedBooks(3);
   const windowPhoto = getAllPhotos().find((photo) => photo.url.endsWith("/night-flight-xiamen.webp"));
 
   return (
@@ -100,6 +104,35 @@ export default function HomePage() {
                   </figcaption>
                 </figure>
               </Link>
+            ))}
+          </div>
+        </section>
+      )}
+
+      {featuredBooks.length > 0 && (
+        <section className={styles.section} aria-labelledby="featured-books-title">
+          <div className={styles.sectionHeading}>
+            <div>
+              <h2 id="featured-books-title">雨夜读故事</h2>
+              <p>花庭书阁 · 留一盏灯，慢慢翻完一本书</p>
+            </div>
+            <a href="/books/">推开书阁 <span aria-hidden="true">↗</span></a>
+          </div>
+          <div className={styles.books}>
+            {featuredBooks.map((book) => (
+              <a key={book.id} href={`/books/#/book/${book.id}`} className={styles.bookCard}>
+                <div className={styles.bookMeta}>
+                  <span>{book.status} · {formatWordCount(book.wordCount)}</span>
+                  <time dateTime={book.updated}>{displayDate(book.updated)}</time>
+                </div>
+                <h3>{book.title}</h3>
+                <p>{book.subtitle}</p>
+                {book.tags.length > 0 && (
+                  <div className={styles.bookTags}>
+                    {book.tags.map((tag) => <span key={tag}>{tag}</span>)}
+                  </div>
+                )}
+              </a>
             ))}
           </div>
         </section>

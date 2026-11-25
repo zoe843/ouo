@@ -4,11 +4,12 @@ import Link from "next/link";
 
 import { usePathname } from "next/navigation";
 
-const navItems = [
+const navItems: Array<{ href: string; label: string; native?: boolean }> = [
   { href: "/", label: "首页" },
   { href: "/essays", label: "随笔" },
   { href: "/murmurs", label: "碎碎念" },
   { href: "/photos", label: "照片" },
+  { href: "/books/", label: "书阁", native: true },
   { href: "/about", label: "关于" },
 ];
 
@@ -28,6 +29,9 @@ export default function Header() {
         </Link>
         <nav className="site-nav" aria-label="主导航">
           {navItems.map((item) => {
+            if (item.native) {
+              return <a key={item.href} href={item.href}>{item.label}</a>;
+            }
             const isActive = item.href === "/" ? pathname === "/" : pathname.startsWith(item.href);
             return <Link prefetch={false} key={item.href} href={item.href} aria-current={isActive ? "page" : undefined}>{item.label}</Link>;
           })}
