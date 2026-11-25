@@ -47,13 +47,13 @@ export default function NotFound() {
       <div className="flex justify-center gap-4 animate-float-up" style={{ animationDelay: "160ms" }}>
         <Link prefetch={false}
           href="/"
-          className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full bg-[#a5bec9]/12 text-sm text-[#e2e7e7] hover:text-white hover:bg-[#a5bec9]/20 hover:border-[#b9cbd1]/45 hover:-translate-y-0.5 transition-all duration-300 ease-out border border-[#b9cbd1]/24"
+          className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full bg-[#2a2621] text-sm text-[#faf7f1] hover:bg-[#9c4e46] hover:border-[#9c4e46] hover:-translate-y-0.5 transition-all duration-300 ease-out border border-[#2a2621]"
         >
           回到首页
         </Link>
         <Link prefetch={false}
           href="/essays"
-          className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full text-sm text-[var(--muted)] hover:text-[var(--foreground)] transition-all duration-300 ease-out border border-[var(--border)]/40 hover:border-[#c8a7b7]/35"
+          className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full text-sm text-[var(--muted)] hover:text-[#2a2621] transition-all duration-300 ease-out border border-[#d5cab9] hover:border-[#9c4e46]/45"
         >
           去看看随笔
         </Link>

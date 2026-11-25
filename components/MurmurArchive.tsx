@@ -162,8 +162,8 @@ export default function MurmurArchive({ murmurs }: { murmurs: Murmur[] }) {
       >
         <div className="flex flex-wrap items-center justify-between gap-3 mb-4">
           <div className="flex flex-wrap items-baseline gap-x-2.5 gap-y-1">
-            <span className="inline-flex items-center gap-2 font-serif text-base text-[#eceae4] tracking-wider">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#bd96a7]" aria-hidden="true" />
+            <span className="inline-flex items-center gap-2 font-serif text-base text-[#2a2621] tracking-wider">
+              <span className="w-[2px] h-3.5 rounded-sm bg-[#9c4e46]" aria-hidden="true" />
               花期点阵
             </span>
             <span className="text-xs text-[var(--muted)]/85 tabular-nums">
@@ -183,7 +183,7 @@ export default function MurmurArchive({ murmurs }: { murmurs: Murmur[] }) {
                     className={
                       "px-2.5 py-0.5 rounded-full text-xs tabular-nums transition-colors " +
                       (selectedYear === y
-                        ? "bg-[#c8a7b7]/20 text-[#f0e6ea] border border-[#c8a7b7]/40"
+                        ? "bg-[#9c4e46]/12 text-[#823d36] border border-[#9c4e46]/35"
                         : "text-[var(--muted)]/75 hover:text-[var(--foreground)] border border-transparent")
                     }
                   >
@@ -197,10 +197,10 @@ export default function MurmurArchive({ murmurs }: { murmurs: Murmur[] }) {
 
             <div className="flex items-center gap-1.5 text-[11px] text-[var(--muted)]/70" aria-hidden="true">
               <span>静</span>
-              <span className="w-2 h-2 rounded-full bg-[#a4bac5]/12" />
-              <span className="w-2 h-2 rounded-full bg-[#99788e]/85" />
-              <span className="w-2 h-2 rounded-full bg-[#c69aad]" />
-              <span className="w-2 h-2 rounded-full bg-[#e2bdcc] shadow-[0_0_6px_rgba(226,189,204,0.45)]" />
+              <span className="w-2 h-2 rounded-full bg-[#2a2621]/[0.08]" />
+              <span className="w-2 h-2 rounded-full bg-[#d8aca4]" />
+              <span className="w-2 h-2 rounded-full bg-[#bc786f]" />
+              <span className="w-2 h-2 rounded-full bg-[#9c4e46]" />
               <span>盛</span>
             </div>
           </div>
@@ -248,8 +248,8 @@ export default function MurmurArchive({ murmurs }: { murmurs: Murmur[] }) {
                     className={
                       "text-left text-[11px] tabular-nums transition-colors rounded px-0.5 py-0.5 " +
                       (monthActive
-                        ? "text-[#f0e6ea] bg-[#c8a7b7]/20"
-                        : "text-[var(--muted)] hover:text-[#d9b8c4]")
+                        ? "text-[#823d36] bg-[#9c4e46]/12"
+                        : "text-[var(--muted)] hover:text-[#9c4e46]")
                     }
                   >
                     {monthIdx + 1}月
@@ -275,7 +275,7 @@ export default function MurmurArchive({ murmurs }: { murmurs: Murmur[] }) {
                         key={dateKey}
                         className={
                           "block aspect-square w-full max-w-[10px] mx-auto rounded-full " +
-                          (monthTotal > 0 ? "bg-[#a4bac5]/[0.13]" : "bg-[#a4bac5]/[0.07]")
+                          (monthTotal > 0 ? "bg-[#2a2621]/[0.08]" : "bg-[#2a2621]/[0.04]")
                         }
                         aria-hidden="true"
                       />
@@ -284,10 +284,10 @@ export default function MurmurArchive({ murmurs }: { murmurs: Murmur[] }) {
 
                   const toneClass =
                     count >= 3
-                      ? "bg-[#e2bdcc] shadow-[0_0_8px_rgba(226,189,204,0.45)]"
+                      ? "bg-[#9c4e46]"
                       : count === 2
-                        ? "bg-[#c69aad]"
-                        : "bg-[#99788e]/90";
+                        ? "bg-[#bc786f]"
+                        : "bg-[#d8aca4]";
 
                   return (
                     <button
@@ -305,7 +305,7 @@ export default function MurmurArchive({ murmurs }: { murmurs: Murmur[] }) {
                         "relative block aspect-square w-full max-w-[10px] mx-auto rounded-full transition-transform duration-200 hover:scale-125 focus-visible:scale-125 " +
                         toneClass +
                         (isDaySelected
-                          ? " ring-2 ring-[#f3d9e5] ring-offset-1 ring-offset-[#0e1b28] scale-125"
+                          ? " ring-2 ring-[#9c4e46] ring-offset-1 ring-offset-[#faf7f1] scale-125"
                           : "")
                       }
                     />
@@ -315,7 +315,7 @@ export default function MurmurArchive({ murmurs }: { murmurs: Murmur[] }) {
                 <span
                   className={
                     "text-right text-[10px] sm:text-[11px] tabular-nums " +
-                    (monthTotal > 0 ? "text-[#c8a7b7]/85" : "text-[var(--muted)]/25")
+                    (monthTotal > 0 ? "text-[#9c4e46]/85" : "text-[var(--muted)]/25")
                   }
                 >
                   {monthTotal > 0 ? monthTotal : "·"}
@@ -326,19 +326,19 @@ export default function MurmurArchive({ murmurs }: { murmurs: Murmur[] }) {
         </div>
 
         {/* 底部交互提示 / 选中预览 */}
-        <div className="mt-4 pt-3 border-t border-[#a4bac5]/10 flex flex-wrap items-center justify-between gap-2 text-xs min-h-[28px]">
+        <div className="mt-4 pt-3 border-t border-[#e4dccd] flex flex-wrap items-center justify-between gap-2 text-xs min-h-[28px]">
           <div className="text-[var(--muted)]/85 min-w-0 leading-relaxed">
             {previewKey && previewItems.length > 0 ? (
               <span>
-                <span className="text-[#d9b8c4] tabular-nums">{formatDayDisplay(previewKey)}</span>
+                <span className="text-[#9c4e46] tabular-nums">{formatDayDisplay(previewKey)}</span>
                 <span className="mx-1.5 text-[var(--muted)]/45">·</span>
                 <span>{previewItems.length} 念</span>
                 <span className="mx-1.5 text-[var(--muted)]/45">·</span>
-                <span className="text-[#d4dce0]/85">「{snippet(previewItems[0].body)}」</span>
+                <span className="text-[#3f3932]">「{snippet(previewItems[0].body)}」</span>
               </span>
             ) : selectedMonth ? (
               <span>
-                正在查看 <span className="text-[#d9b8c4]">{formatMonthLabel(selectedMonth)}</span> 的碎碎念
+                正在查看 <span className="text-[#9c4e46]">{formatMonthLabel(selectedMonth)}</span> 的碎碎念
               </span>
             ) : (
               <span>点亮的花点对应写下碎碎念的日子，点按月份或花点可筛选</span>
@@ -349,7 +349,7 @@ export default function MurmurArchive({ murmurs }: { murmurs: Murmur[] }) {
             <button
               type="button"
               onClick={clearDateFilter}
-              className="text-[#d9b8c4] hover:text-[#f0e6ea] transition-colors flex-shrink-0"
+              className="text-[#9c4e46] hover:text-[#73322c] transition-colors flex-shrink-0"
             >
               清除日期筛选
             </button>
@@ -366,7 +366,7 @@ export default function MurmurArchive({ murmurs }: { murmurs: Murmur[] }) {
             onChange={(e) => setQuery(e.target.value)}
             placeholder="搜一句念头或关键词…"
             aria-label="搜索碎碎念"
-            className="w-full rounded-lg border border-[#bdc7d0]/14 bg-[#0e1b28]/80 px-3.5 py-2 pr-14 text-sm text-[var(--foreground)] placeholder:text-[var(--muted)]/55 outline-none transition-colors focus:border-[#c8a7b7]/50"
+            className="w-full rounded-lg border border-[#dcd3c4] bg-[#faf7f1] px-3.5 py-2 pr-14 text-sm text-[#2a2621] placeholder:text-[var(--muted)]/60 outline-none transition-colors focus:border-[#9c4e46]/55"
           />
           {query && (
             <button
@@ -388,8 +388,8 @@ export default function MurmurArchive({ murmurs }: { murmurs: Murmur[] }) {
               className={
                 "px-2.5 py-1 rounded-full text-xs border transition-colors " +
                 (selectedEmoji === null
-                  ? "bg-[#c8a7b7]/18 border-[#c8a7b7]/40 text-[#f0e6ea]"
-                  : "border-[#bdc7d0]/12 text-[var(--muted)] hover:text-[var(--foreground)] hover:border-[#bdc7d0]/25")
+                  ? "bg-[#9c4e46]/12 border-[#9c4e46]/35 text-[#823d36]"
+                  : "border-[#dcd3c4] text-[var(--muted)] hover:text-[#2a2621] hover:border-[#bfb3a0]")
               }
             >
               全部 {murmurs.length}
@@ -406,8 +406,8 @@ export default function MurmurArchive({ murmurs }: { murmurs: Murmur[] }) {
                   className={
                     "inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs border transition-colors " +
                     (active
-                      ? "bg-[#c8a7b7]/18 border-[#c8a7b7]/40 text-[#f0e6ea]"
-                      : "border-[#bdc7d0]/12 text-[var(--muted)] hover:text-[var(--foreground)] hover:border-[#bdc7d0]/25")
+                      ? "bg-[#9c4e46]/12 border-[#9c4e46]/35 text-[#823d36]"
+                      : "border-[#dcd3c4] text-[var(--muted)] hover:text-[#2a2621] hover:border-[#bfb3a0]")
                   }
                 >
                   <span>{emoji}</span>
@@ -424,7 +424,7 @@ export default function MurmurArchive({ murmurs }: { murmurs: Murmur[] }) {
             <button
               type="button"
               onClick={resetAllFilters}
-              className="text-[#d9b8c4] hover:text-[#f0e6ea] transition-colors"
+              className="text-[#9c4e46] hover:text-[#73322c] transition-colors"
             >
               重置全部筛选
             </button>
@@ -441,7 +441,7 @@ export default function MurmurArchive({ murmurs }: { murmurs: Murmur[] }) {
           <button
             type="button"
             onClick={resetAllFilters}
-            className="mt-4 px-4 py-1.5 rounded-full border border-[#c8a7b7]/35 bg-[#c8a7b7]/12 text-xs text-[#eceae4] hover:bg-[#c8a7b7]/22 transition-colors"
+            className="mt-4 px-4 py-1.5 rounded-full border border-[#9c4e46]/35 bg-[#9c4e46]/10 text-xs text-[#823d36] hover:bg-[#9c4e46]/18 transition-colors"
           >
             查看全部碎碎念
           </button>
@@ -451,11 +451,11 @@ export default function MurmurArchive({ murmurs }: { murmurs: Murmur[] }) {
           {groups.map((g) => (
             <section key={g.month}>
               <div className="flex items-center gap-3 mb-3 px-1">
-                <span className="w-1.5 h-1.5 rounded-full bg-[#bd96a7] inline-block" aria-hidden="true" />
-                <h2 className="font-serif text-sm tracking-widest text-[#d4dce0]">
+                <span className="w-[2px] h-3 rounded-sm bg-[#9c4e46] inline-block" aria-hidden="true" />
+                <h2 className="font-serif text-sm tracking-widest text-[#4a423a]">
                   {g.label}
                 </h2>
-                <span className="flex-1 h-px bg-[#a4bac5]/15" />
+                <span className="flex-1 h-px bg-[#dfd6c7]" />
                 <span className="text-xs text-[var(--muted)]/65 tabular-nums">{g.items.length} 条</span>
               </div>
               <div className="night-panel px-4 py-1.5 sm:px-5 sm:py-2">

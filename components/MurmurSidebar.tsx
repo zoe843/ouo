@@ -16,7 +16,7 @@ export default function MurmurSidebar() {
       </div>
 
       {/* 全部列表 */}
-      <div className="rounded-lg bg-[var(--card)]/30 border border-[var(--border)]/20 backdrop-blur-sm">
+      <div className="rounded-lg bg-[var(--card)] border border-[var(--border)]">
         {murmurs.map((m, i) => (
           <div
             key={i}

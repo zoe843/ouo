@@ -1,7 +1,7 @@
 import Link from "next/link";
 export default function Footer() {
   return (
-    <footer className="border-t border-[var(--border)]/30 mt-20">
+    <footer className="border-t border-[#dfd6c7] mt-20">
       <div className="max-w-3xl mx-auto px-6 py-8 pb-16 sm:pb-10 text-center space-y-4">
         {/* 导航 */}
         <nav className="flex flex-wrap justify-center gap-x-6 gap-y-2">

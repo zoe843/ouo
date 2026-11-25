@@ -63,7 +63,7 @@ export default async function EssayPage({ params }: Props) {
       <div className="night-panel px-6 py-8 sm:px-10 sm:py-10 animate-float-up">
         <article>
           <header className="mb-10 text-center">
-            <h1 className="font-serif text-2xl sm:text-3xl font-light tracking-wider text-[#eceae4]">
+            <h1 className="font-serif text-2xl sm:text-3xl font-light tracking-wider text-[#2a2621]">
               {essay.title}
             </h1>
             <div className="flex flex-wrap items-center justify-center gap-x-3 gap-y-1.5 mt-4 text-xs sm:text-sm text-[var(--muted)] font-light">
@@ -78,7 +78,7 @@ export default async function EssayPage({ params }: Props) {
               {essay.tags.length > 0 && (
                 <div className="flex flex-wrap justify-center gap-2.5">
                   {essay.tags.map((tag) => (
-                    <span key={tag} className="text-[#b5a6b4]">
+                    <span key={tag} className="text-[#84786a]">
                       {tag}
                     </span>
                   ))}
@@ -93,12 +93,12 @@ export default async function EssayPage({ params }: Props) {
         </article>
       </div>
 
-      <nav className="mt-12 pt-8 border-t border-[var(--border)]/30 flex justify-between gap-6 text-sm">
+      <nav className="mt-12 pt-8 border-t border-[#dfd6c7] flex justify-between gap-6 text-sm">
         {prev ? (
           <Link
             prefetch={false}
             href={`/essays/${prev.slug}`}
-            className="text-[var(--muted)] hover:text-[#d9b8c4] transition-colors"
+            className="text-[var(--muted)] hover:text-[#9c4e46] transition-colors"
           >
             ← {prev.title}
           </Link>
@@ -109,7 +109,7 @@ export default async function EssayPage({ params }: Props) {
           <Link
             prefetch={false}
             href={`/essays/${next.slug}`}
-            className="text-[var(--muted)] hover:text-[#d9b8c4] transition-colors text-right"
+            className="text-[var(--muted)] hover:text-[#9c4e46] transition-colors text-right"
           >
             {next.title} →
           </Link>

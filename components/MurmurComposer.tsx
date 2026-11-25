@@ -81,9 +81,9 @@ export default function MurmurComposer() {
   }
 
   const inputCls =
-    "w-full rounded-xl border border-[var(--border)]/40 bg-[var(--card)]/60 px-4 py-3 " +
-    "text-[var(--foreground)]/90 placeholder:text-[var(--muted)]/40 outline-none " +
-    "transition-colors focus:border-[var(--primary)]/60";
+    "w-full rounded-xl border border-[#dcd3c4] bg-[#f7f3eb] px-4 py-3 " +
+    "text-[#2a2621] placeholder:text-[var(--muted)]/55 outline-none " +
+    "transition-colors focus:border-[#9c4e46]/60";
 
   return (
     <div className="space-y-4">
@@ -124,7 +124,7 @@ export default function MurmurComposer() {
               className={
                 "text-lg rounded-full px-1.5 py-0.5 transition-all select-none " +
                 (emoji === e
-                  ? "bg-[var(--primary)]/25 scale-110"
+                  ? "bg-[#9c4e46]/15 scale-110"
                   : "opacity-55 hover:opacity-100")
               }
               aria-label={`选择表情 ${e}`}
@@ -142,7 +142,7 @@ export default function MurmurComposer() {
         type="button"
         onClick={send}
         disabled={status === "sending" || !body.trim()}
-        className="w-full rounded-full bg-[#c8a7b7]/85 py-3 text-sm font-light tracking-[0.3em] text-[#0c1824] transition-all hover:bg-[#d9b8c4] disabled:bg-[#192b3b] disabled:text-[var(--muted)]/70 disabled:border disabled:border-[var(--border)]/35 disabled:cursor-not-allowed"
+        className="w-full rounded-full bg-[#9c4e46] py-3 text-sm font-light tracking-[0.3em] text-[#faf7f1] transition-all hover:bg-[#823d36] disabled:bg-[#e6decf] disabled:text-[#9a8f82] disabled:border disabled:border-[#dcd3c4] disabled:cursor-not-allowed"
       >
         {status === "sending" ? "送达中…" : "说出去"}
       </button>

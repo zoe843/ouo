@@ -11,7 +11,7 @@ export const components: MDXComponents = {
     <h3 className="font-serif text-lg font-light tracking-wide mt-8 mb-3 text-[var(--foreground)]" {...props} />
   ),
   p: (props) => (
-    <p className="my-5 text-[17px] leading-[1.9] text-[var(--foreground)]/85" {...props} />
+    <p className="my-5 text-[17px] leading-[1.9] text-[#3f3932]" {...props} />
   ),
   a: (props) => (
     <a
@@ -23,24 +23,24 @@ export const components: MDXComponents = {
   ),
   blockquote: (props) => (
     <blockquote
-      className="font-serif border-l-2 border-[var(--primary)]/40 pl-4 my-6 italic text-[var(--muted)]"
+      className="font-serif border-l-2 border-[#9c4e46]/45 pl-4 my-6 italic text-[#665d52]"
       {...props}
     />
   ),
   strong: (props) => (
-    <strong className="font-normal text-[var(--foreground)]" {...props} />
+    <strong className="font-medium text-[#2a2621]" {...props} />
   ),
   ul: (props) => (
-    <ul className="list-disc list-inside my-5 space-y-2 text-[17px] leading-[1.9] text-[var(--foreground)]/85" {...props} />
+    <ul className="list-disc list-inside my-5 space-y-2 text-[17px] leading-[1.9] text-[#3f3932]" {...props} />
   ),
   ol: (props) => (
-    <ol className="list-decimal list-inside my-5 space-y-2 text-[17px] leading-[1.9] text-[var(--foreground)]/85" {...props} />
+    <ol className="list-decimal list-inside my-5 space-y-2 text-[17px] leading-[1.9] text-[#3f3932]" {...props} />
   ),
-  hr: () => <hr className="my-10 border-[var(--border)]/30" />,
+  hr: () => <hr className="my-10 border-[#dfd6c7]" />,
   code: (props) => (
-    <code className="px-1.5 py-0.5 rounded bg-[var(--primary)]/10 text-[var(--accent)] text-sm" {...props} />
+    <code className="px-1.5 py-0.5 rounded bg-[#ebe3d4] text-[#823d36] text-sm" {...props} />
   ),
   pre: (props) => (
-    <pre className="p-4 rounded-xl bg-[var(--card)] border border-[var(--border)]/30 overflow-x-auto my-6 text-sm" {...props} />
+    <pre className="p-4 rounded-xl bg-[#f2ece0] border border-[#dcd3c4] text-[#2a2621] overflow-x-auto my-6 text-sm" {...props} />
   ),
 };

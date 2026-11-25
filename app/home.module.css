@@ -26,7 +26,7 @@
 
 .title {
   margin: 22px 0 24px;
-  color: #edece5;
+  color: #2a2621;
   font-family: var(--font-serif);
   font-size: clamp(48px, 5.6vw, 78px);
   font-weight: 400;
@@ -36,7 +36,7 @@
 }
 
 .subtitle {
-  color: #d7dce0;
+  color: #4d453d;
   font-family: var(--font-serif);
   font-size: 22px;
   letter-spacing: .12em;
@@ -60,21 +60,22 @@
 
 .primaryLink {
   padding: 12px 24px;
-  border: 1px solid #b9cbd13d;
+  border: 1px solid #2a2621;
   border-radius: 6px;
-  background: #a5bec911;
-  color: #e2e7e7;
-  transition: background .2s, border-color .2s;
+  background: #2a2621;
+  color: #faf7f1;
+  transition: background .2s, border-color .2s, color .2s;
 }
 
 .primaryLink:hover {
-  background: #a5bec924;
-  border-color: #b9cbd17a;
+  background: #9c4e46;
+  border-color: #9c4e46;
+  color: #faf7f1;
 }
 
 .secondaryLink {
   padding-block: 12px;
-  color: #b2c2cb;
+  color: #5b5248;
   transition: color .2s;
 }
 
@@ -83,7 +84,7 @@
 }
 
 .secondaryLink:hover {
-  color: #f0e8e4;
+  color: #9c4e46;
 }
 
 .windowLink {
@@ -94,29 +95,29 @@
 
 .window {
   padding: 12px 12px 0;
-  background: #182731;
-  border: 1px solid #b9cbd125;
+  background: #fcfaf5;
+  border: 1px solid #dfd6c7;
   border-radius: 7px;
-  box-shadow: 0 24px 60px #00000040;
+  box-shadow: 0 18px 40px rgba(48, 38, 28, 0.10);
   transition: border-color .3s;
 }
 
 .windowImage {
   overflow: hidden;
   border-radius: 3px;
-  background: #0c151e;
+  background: #e8e0d2;
 }
 
 .windowImage img {
   display: block;
   width: 100%;
   height: auto;
-  opacity: .88;
+  opacity: .96;
   transition: opacity .3s;
 }
 
 .windowLink:hover .window {
-  border-color: #b9cbd156;
+  border-color: #cbbda8;
 }
 
 .windowLink:hover img {
@@ -131,7 +132,7 @@
   padding: 16px 3px 18px;
   font-family: var(--font-serif);
   font-size: 14px;
-  color: #d8dee0;
+  color: #3a342d;
 }
 
 .window time {
@@ -156,9 +157,9 @@
   align-items: center;
   gap: 32px;
   padding: 24px 28px;
-  border: 1px solid #bdc7d019;
+  border: 1px solid #dfd6c7;
   border-radius: 8px;
-  background: #111e2bdd;
+  background: #faf7f1;
 }
 
 .noteHeading {
@@ -171,20 +172,20 @@
   gap: 9px;
   font-size: 13px;
   font-weight: 400;
-  color: #c7afb9;
+  color: #9c4e46;
   letter-spacing: .08em;
 }
 
 .noteDot {
-  width: 5px;
-  height: 5px;
-  background: #bd96a7;
-  border-radius: 50%;
+  width: 2px;
+  height: 11px;
+  background: #9c4e46;
+  border-radius: 1px;
 }
 
 .noteHeading time {
   display: block;
-  margin: 7px 0 0 14px;
+  margin: 7px 0 0 11px;
   color: var(--muted);
   font-size: 11px;
   letter-spacing: .07em;
@@ -195,7 +196,7 @@
   flex: 1;
   font-size: 14px;
   line-height: 1.9;
-  color: #d2dade;
+  color: #3f3932;
   overflow-wrap: anywhere;
 }
 
@@ -205,6 +206,7 @@
 
 .noteBody h3 {
   font-weight: 400;
+  color: #2a2621;
   margin-bottom: 4px;
 }
 
@@ -216,7 +218,7 @@
 }
 
 .noteLink:hover {
-  color: var(--foreground);
+  color: #9c4e46;
 }
 
 .noteLink span {
@@ -240,7 +242,7 @@
   font-size: 26px;
   font-weight: 400;
   letter-spacing: .06em;
-  color: #e3e5e1;
+  color: #2a2621;
 }
 
 .sectionHeading p {
@@ -252,13 +254,13 @@
 
 .sectionHeading > a {
   flex-shrink: 0;
-  color: #b2c2cb;
+  color: #645b50;
   font-size: 12px;
   padding-block: 12px;
 }
 
 .sectionHeading > a:hover {
-  color: var(--foreground);
+  color: #9c4e46;
 }
 
 .sectionHeading > a span {
@@ -267,8 +269,9 @@
 
 .essays {
   padding: 8px 28px;
+  border: 1px solid #dfd6c7;
   border-radius: 8px;
-  background: #0e1b28e8;
+  background: #faf7f1;
 }
 
 .essays > a:last-child {
@@ -298,7 +301,8 @@
 .photoImage {
   overflow: hidden;
   border-radius: 6px;
-  background: #142331;
+  background: #e8e0d2;
+  border: 1px solid #dfd6c7;
 }
 
 .photoImage img {
@@ -309,7 +313,7 @@
 }
 
 .photoLink:hover img {
-  filter: brightness(1.08);
+  filter: contrast(1.03) brightness(1.02);
 }
 
 .photoLink figcaption {
@@ -325,14 +329,15 @@
 .photoLink h3 {
   margin-top: 6px;
   font-family: var(--font-serif);
-  color: #dce1e2;
+  color: #2a2621;
   font-weight: 400;
   font-size: 15px;
   line-height: 1.7;
+  transition: color .2s;
 }
 
 .photoLink:hover h3 {
-  color: #fff1f0;
+  color: #9c4e46;
 }
 
 .books {
@@ -346,15 +351,15 @@
   flex-direction: column;
   min-width: 0;
   padding: 22px 24px;
-  border: 1px solid #bdc7d019;
+  border: 1px solid #dfd6c7;
   border-radius: 8px;
-  background: #0e1b28e8;
+  background: #faf7f1;
   transition: border-color .22s, background-color .22s;
 }
 
 .bookCard:hover {
-  border-color: #b9cbd145;
-  background: #122131ee;
+  border-color: #c5b6a0;
+  background: #fcfaf6;
 }
 
 .bookMeta {
@@ -373,12 +378,12 @@
   font-size: 19px;
   font-weight: 400;
   letter-spacing: .06em;
-  color: #e3e5e1;
+  color: #2a2621;
   transition: color .2s;
 }
 
 .bookCard:hover h3 {
-  color: #d9b8c4;
+  color: #9c4e46;
 }
 
 .bookCard p {
@@ -398,7 +403,7 @@
   gap: 10px;
   margin-top: auto;
   padding-top: 16px;
-  color: #b5a6b4;
+  color: #84786a;
   font-size: 11px;
 }
 
@@ -409,13 +414,13 @@
 
 .farewell > span {
   font-size: 24px;
-  color: #b18c9c;
+  color: #9c4e46;
 }
 
 .farewell p {
   margin: 16px 0 12px;
   font-family: var(--font-serif);
-  color: #bac6cd;
+  color: #5b5248;
   font-size: 15px;
   letter-spacing: .08em;
 }
@@ -428,7 +433,7 @@
 }
 
 .farewell a:hover {
-  color: var(--foreground);
+  color: #9c4e46;
 }
 
 @media (max-width: 900px) {

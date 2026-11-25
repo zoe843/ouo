@@ -26,8 +26,8 @@
   width: var(--size);
   height: calc(var(--size) * .72);
   border-radius: 78% 12% 72% 42%;
-  background: linear-gradient(135deg, #e2bdcc 8%, #c69aad 56%, #99788e);
-  box-shadow: inset 1px 1px 2px #f3d9e533;
+  background: linear-gradient(135deg, #d7aba3 10%, #c18d85 58%, #a6746d);
+  box-shadow: inset 1px 1px 2px rgba(255, 245, 240, 0.35);
   animation: tumble var(--turn) var(--phase) ease-in-out infinite alternate;
 }
 

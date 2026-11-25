@@ -130,7 +130,7 @@ export default function PhotoGallery({ series }: { series: PhotoSeries[] }) {
           onClick={() => { setSort("desc"); setPage(0); }}
           className={`px-3 py-1 rounded-full text-xs tracking-wide border transition-all duration-300 ${
             sort === "desc"
-              ? "bg-[#c8a7b7]/18 border-[#c8a7b7]/40 text-[#f0e6ea]"
+              ? "bg-[#9c4e46]/12 border-[#9c4e46]/35 text-[#823d36]"
               : "border-transparent text-[var(--muted)] hover:text-[var(--foreground)]"
           }`}
         >
@@ -140,7 +140,7 @@ export default function PhotoGallery({ series }: { series: PhotoSeries[] }) {
           onClick={() => { setSort("asc"); setPage(0); }}
           className={`px-3 py-1 rounded-full text-xs tracking-wide border transition-all duration-300 ${
             sort === "asc"
-              ? "bg-[#c8a7b7]/18 border-[#c8a7b7]/40 text-[#f0e6ea]"
+              ? "bg-[#9c4e46]/12 border-[#9c4e46]/35 text-[#823d36]"
               : "border-transparent text-[var(--muted)] hover:text-[var(--foreground)]"
           }`}
         >
@@ -167,7 +167,7 @@ export default function PhotoGallery({ series }: { series: PhotoSeries[] }) {
                   {s.tags.map((t) => (
                     <span
                       key={t}
-                      className="px-2 py-0.5 rounded-full bg-[#c8a7b7]/10 border border-[#c8a7b7]/20 text-[#d4c0c9] text-[11px]"
+                      className="px-2 py-0.5 rounded-full bg-[#f0e9dc] border border-[#dfd6c7] text-[#6d6357] text-[11px]"
                     >
                       {t}
                     </span>
@@ -190,7 +190,7 @@ export default function PhotoGallery({ series }: { series: PhotoSeries[] }) {
                   <button
                     key={pi}
                     onClick={() => open(realSi, pi)}
-                    className="group relative aspect-[4/3] rounded-lg overflow-hidden bg-[var(--card)] border border-[#bdc7d0]/15 card-glow transition-all duration-500 ease-out hover:-translate-y-1"
+                    className="group relative aspect-[4/3] rounded-lg overflow-hidden bg-[#ece5d8] border border-[#dfd6c7] card-glow transition-all duration-500 ease-out hover:-translate-y-1"
                   >
                     <img
                       src={photo.thumb ?? photo.url}
@@ -217,7 +217,7 @@ export default function PhotoGallery({ series }: { series: PhotoSeries[] }) {
           <button
             onClick={() => setPage(Math.max(0, safePage - 1))}
             disabled={safePage === 0}
-            className="px-3 py-1.5 text-xs rounded-full border border-[var(--border)]/30 text-[var(--muted)] hover:text-[var(--foreground)] hover:border-[#c8a7b7]/35 disabled:opacity-30 disabled:cursor-not-allowed transition-all duration-300"
+            className="px-3 py-1.5 text-xs rounded-full border border-[#dcd3c4] text-[var(--muted)] hover:text-[var(--foreground)] hover:border-[#9c4e46]/45 disabled:opacity-30 disabled:cursor-not-allowed transition-all duration-300"
           >
             ← 上一页
           </button>
@@ -227,7 +227,7 @@ export default function PhotoGallery({ series }: { series: PhotoSeries[] }) {
               onClick={() => setPage(i)}
               className={`w-8 h-8 text-xs rounded-full transition-all duration-300 ${
                 i === safePage
-                  ? "bg-[#c8a7b7]/20 text-[#f0e6ea]"
+                  ? "bg-[#9c4e46]/12 border border-[#9c4e46]/35 text-[#823d36]"
                   : "text-[var(--muted)] hover:text-[var(--foreground)] hover:bg-[var(--foreground)]/5"
               }`}
             >
@@ -237,7 +237,7 @@ export default function PhotoGallery({ series }: { series: PhotoSeries[] }) {
           <button
             onClick={() => setPage(Math.min(totalPages - 1, safePage + 1))}
             disabled={safePage === totalPages - 1}
-            className="px-3 py-1.5 text-xs rounded-full border border-[var(--border)]/30 text-[var(--muted)] hover:text-[var(--foreground)] hover:border-[#c8a7b7]/35 disabled:opacity-30 disabled:cursor-not-allowed transition-all duration-300"
+            className="px-3 py-1.5 text-xs rounded-full border border-[#dcd3c4] text-[var(--muted)] hover:text-[var(--foreground)] hover:border-[#9c4e46]/45 disabled:opacity-30 disabled:cursor-not-allowed transition-all duration-300"
           >
             下一页 →
           </button>
@@ -257,7 +257,7 @@ export default function PhotoGallery({ series }: { series: PhotoSeries[] }) {
             role="dialog"
             aria-modal="true"
             aria-label={cur?.photo.title ?? "照片大图"}
-            className="fixed inset-0 z-[100] bg-black/90 backdrop-blur-sm flex items-center justify-center"
+            className="fixed inset-0 z-[100] bg-[#161411]/92 backdrop-blur-sm flex items-center justify-center"
             onClick={close}
             onTouchStart={onTouchStart}
             onTouchEnd={onTouchEnd}
@@ -265,21 +265,21 @@ export default function PhotoGallery({ series }: { series: PhotoSeries[] }) {
             <button
               onClick={close}
               aria-label="关闭大图"
-              className="absolute top-4 right-4 sm:top-6 sm:right-6 w-10 h-10 rounded-full bg-[#0c1824]/75 border border-white/15 backdrop-blur-sm flex items-center justify-center text-white/85 hover:text-white hover:bg-[#0c1824]/95 text-lg font-light transition-colors z-10"
+              className="absolute top-4 right-4 sm:top-6 sm:right-6 w-10 h-10 rounded-full bg-[#221e1a]/80 border border-white/15 backdrop-blur-sm flex items-center justify-center text-white/85 hover:text-white hover:bg-[#2f2924] text-lg font-light transition-colors z-10"
             >
               ✕
             </button>
             <button
               onClick={(e) => { e.stopPropagation(); goPrev(); }}
               aria-label="上一张"
-              className="absolute left-3 sm:left-5 w-10 h-10 rounded-full bg-[#0c1824]/75 border border-white/15 backdrop-blur-sm flex items-center justify-center text-white/85 hover:text-white hover:bg-[#0c1824]/95 text-2xl leading-none font-light transition-colors z-10"
+              className="absolute left-3 sm:left-5 w-10 h-10 rounded-full bg-[#221e1a]/80 border border-white/15 backdrop-blur-sm flex items-center justify-center text-white/85 hover:text-white hover:bg-[#2f2924] text-2xl leading-none font-light transition-colors z-10"
             >
               ‹
             </button>
             <button
               onClick={(e) => { e.stopPropagation(); goNext(); }}
               aria-label="下一张"
-              className="absolute right-3 sm:right-5 w-10 h-10 rounded-full bg-[#0c1824]/75 border border-white/15 backdrop-blur-sm flex items-center justify-center text-white/85 hover:text-white hover:bg-[#0c1824]/95 text-2xl leading-none font-light transition-colors z-10"
+              className="absolute right-3 sm:right-5 w-10 h-10 rounded-full bg-[#221e1a]/80 border border-white/15 backdrop-blur-sm flex items-center justify-center text-white/85 hover:text-white hover:bg-[#2f2924] text-2xl leading-none font-light transition-colors z-10"
             >
               ›
             </button>

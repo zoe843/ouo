@@ -8,14 +8,14 @@ function formatMurmurTime(datetime: string): string {
 
 export default function MurmurCard({ murmur }: { murmur: Murmur }) {
   return (
-    <article className="group relative py-4 px-2 border-b border-[#a4bac5]/12 last:border-b-0 transition-colors duration-200 hover:bg-[#a5bec9]/[0.04] rounded-md">
+    <article className="group relative py-4 px-2 border-b border-[#e6decf] last:border-b-0 transition-colors duration-200 hover:bg-[#f2ece0]/65 rounded-md">
       <div className="flex gap-3.5 items-start">
         <span className="text-lg flex-shrink-0 mt-0.5 select-none">{murmur.emoji}</span>
         <div className="flex-1 min-w-0">
           {murmur.title && (
-            <h3 className="font-serif text-[15px] text-[#eceae4] mb-1">{murmur.title}</h3>
+            <h3 className="font-serif text-[15px] text-[#2a2621] mb-1">{murmur.title}</h3>
           )}
-          <p className="text-sm text-[#d4dce0] leading-[1.85] whitespace-pre-line break-words">
+          <p className="text-sm text-[#3f3932] leading-[1.85] whitespace-pre-line break-words">
             {murmur.body}
           </p>
           <time

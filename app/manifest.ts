@@ -7,8 +7,8 @@ export default function manifest(): MetadataRoute.Manifest {
     description: "一个存放随笔与照片的小站",
     start_url: "/",
     display: "standalone",
-    background_color: "#0c1824",
-    theme_color: "#0c1824",
+    background_color: "#f4efe6",
+    theme_color: "#f4efe6",
     icons: [
       { src: "/icons/icon-192.png", sizes: "192x192", type: "image/png" },
       { src: "/icons/icon-512.png", sizes: "512x512", type: "image/png" },
