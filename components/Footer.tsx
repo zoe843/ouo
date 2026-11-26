@@ -17,6 +17,7 @@ export default function Footer() {
           <Link prefetch={false} href="/photos" className="text-xs text-[var(--muted)] hover:text-[var(--foreground)] transition-colors">
             照片
           </Link>
+          {/* eslint-disable-next-line @next/next/no-html-link-for-pages */}
           <a href="/books/" className="text-xs text-[var(--muted)] hover:text-[var(--foreground)] transition-colors">
             书阁
           </a>

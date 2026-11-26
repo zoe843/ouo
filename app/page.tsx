@@ -116,6 +116,7 @@ export default async function HomePage() {
               <h2 id="featured-books-title">雨夜读故事</h2>
               <p>花庭书阁 · 留一盏灯，慢慢翻完一本书</p>
             </div>
+            {/* eslint-disable-next-line @next/next/no-html-link-for-pages */}
             <a href="/books/">推开书阁 <span aria-hidden="true">↗</span></a>
           </div>
           <div className={styles.books}>
