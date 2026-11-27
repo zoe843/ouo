@@ -23,6 +23,15 @@ const CATALOG_URL = "https://zoe843.github.io/rainbloom-novels/data/catalog.json
 
 const FALLBACK_BOOKS: FeaturedBook[] = [
   {
+    id: "the-fourteenth-month",
+    title: "十四月",
+    subtitle: "九月一日清晨掌心凭空多出的半枚黄铜断扣，把高二少女浅井弥生拖进了一场跨越四百三十九天的静默回响。",
+    status: "已完结",
+    updated: "2026-11-27",
+    wordCount: 281829,
+    tags: ["日系轻文学", "都市悬疑", "长篇"],
+  },
+  {
     id: "white-rain-of-summer",
     title: "白雨止于盛夏",
     subtitle: "那场落于烈日之下的冰凉白雨，把十年前沉没的旧村与她的命一起锁在了水底。",
@@ -82,7 +91,10 @@ function toFeaturedBook(raw: RawBook): FeaturedBook | null {
  */
 export async function getFeaturedBooks(limit = 3): Promise<FeaturedBook[]> {
   try {
-    const response = await fetch(CATALOG_URL, { signal: AbortSignal.timeout(3000) });
+    const response = await fetch(CATALOG_URL, {
+      cache: "no-store",
+      signal: AbortSignal.timeout(3000),
+    });
     if (!response.ok) return FALLBACK_BOOKS.slice(0, limit);
     const data = (await response.json()) as unknown;
     if (!Array.isArray(data)) return FALLBACK_BOOKS.slice(0, limit);
