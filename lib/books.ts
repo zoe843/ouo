@@ -23,6 +23,15 @@ const CATALOG_URL = "https://zoe843.github.io/rainbloom-novels/data/catalog.json
 
 const FALLBACK_BOOKS: FeaturedBook[] = [
   {
+    id: "cold-arc",
+    title: "冷弧",
+    subtitle: "十一月干冷的 50Hz 嗡鸣里，旧西翼配电门后悄然划过的冷弧，把四名女高中生锁进了互不相容的五天。",
+    status: "已完结",
+    updated: "2026-11-27",
+    wordCount: 64872,
+    tags: ["日系轻文学", "电波悬疑", "科幻中长篇"],
+  },
+  {
     id: "the-fourteenth-month",
     title: "十四月",
     subtitle: "九月一日清晨掌心凭空多出的半枚黄铜断扣，把高二少女浅井弥生拖进了一场跨越四百三十九天的静默回响。",
